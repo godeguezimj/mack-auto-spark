@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Phone, MessageCircle, MapPin, Star, ShieldCheck, Wrench, Gauge,
   Cog, Snowflake, Zap, Car, Disc, Settings, Sparkles, CheckCircle2,
-  AlertTriangle, Volume2, Fuel, LampDesk, ChevronDown, Clock, Award, Users, ThumbsUp,
+  AlertTriangle, Volume2, Fuel, LampDesk, ChevronDown, Clock, Users,
 } from "lucide-react";
 import heroImg from "@/assets/hero-oficina.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
