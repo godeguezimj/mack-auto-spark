@@ -27,18 +27,20 @@
   --color-whats-dark: var(--whats-dark);
   --color-ink: var(--ink);
   --color-surface: var(--surface);
+  --color-neon: var(--neon);
   --font-display: "Barlow Condensed", "Inter", sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.5rem;
-  /* Brand */
-  --primary: oklch(0.55 0.23 27);          /* #D60000 */
+  --radius: 0.75rem;
+  /* Brand — MACK neon blue */
+  --primary: oklch(0.78 0.16 230);          /* #00BFFF neon blue */
   --primary-foreground: oklch(1 0 0);
-  --ink: oklch(0.18 0.005 0);               /* #1A1A1A */
-  --surface: oklch(0.97 0 0);               /* #F5F5F5 */
-  --whats: oklch(0.7 0.18 145);             /* WhatsApp green */
+  --neon: oklch(0.83 0.16 225);             /* #00D4FF brighter accent */
+  --ink: oklch(0.13 0 0);                   /* #000000 */
+  --surface: oklch(0.975 0.005 240);        /* #F5F7FA */
+  --whats: oklch(0.7 0.18 145);
   --whats-dark: oklch(0.6 0.18 145);
 
   --background: oklch(1 0 0);
@@ -51,8 +53,8 @@
   --muted-foreground: oklch(0.45 0 0);
   --accent: var(--surface);
   --accent-foreground: var(--ink);
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.9 0 0);
+  --border: oklch(0.9 0.01 240);
+  --input: oklch(0.92 0.01 240);
   --ring: var(--primary);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--ink);
@@ -77,6 +79,11 @@
     font-family: var(--font-display);
     letter-spacing: -0.01em;
   }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 35%, transparent);
+    border-color: var(--primary);
+  }
 }
 
 @layer utilities {
@@ -90,18 +97,52 @@
   .btn-primary {
     background-color: var(--primary);
     color: var(--primary-foreground);
+    box-shadow: 0 8px 30px -10px color-mix(in oklab, var(--primary) 60%, transparent);
     transition: all .2s ease;
   }
-  .btn-primary:hover { filter: brightness(.92); transform: translateY(-1px); }
+  .btn-primary:hover { background-color: var(--neon); transform: translateY(-1px); box-shadow: 0 12px 36px -10px color-mix(in oklab, var(--neon) 70%, transparent); }
+  .btn-outline-neon {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    transition: all .2s ease;
+  }
+  .btn-outline-neon:hover { background: var(--primary); color: white; }
+  .glass {
+    background: color-mix(in oklab, white 8%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid color-mix(in oklab, white 14%, transparent);
+  }
+  .glass-light {
+    background: color-mix(in oklab, white 70%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid color-mix(in oklab, var(--primary) 18%, transparent);
+  }
+  .neon-glow { box-shadow: 0 0 24px -2px color-mix(in oklab, var(--primary) 55%, transparent); }
+  .text-glow { text-shadow: 0 0 18px color-mix(in oklab, var(--primary) 60%, transparent); }
   .diag-stripe {
     background-image: repeating-linear-gradient(45deg, var(--primary) 0 12px, transparent 12px 24px);
+  }
+  .grid-tech {
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--primary) 18%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--primary) 18%, transparent) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   }
   .text-balance { text-wrap: balance; }
 }
 
 @keyframes pulseRing {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, .55); }
-  70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(0, 191, 255, .55); }
+  70% { box-shadow: 0 0 0 18px rgba(0, 191, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 191, 255, 0); }
 }
 .pulse-ring { animation: pulseRing 1.8s infinite; }
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: .7; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+.scanline { animation: scanline 6s linear infinite; }

@@ -6,6 +6,7 @@ import {
   AlertTriangle, Volume2, Fuel, LampDesk, ChevronDown, Clock, Award,
 } from "lucide-react";
 import heroImg from "@/assets/hero-oficina.jpg";
+import mackLogo from "@/assets/mack-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -98,86 +99,84 @@ function Index() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-40 bg-[var(--ink)]/95 backdrop-blur border-b border-white/10">
+      <header className="sticky top-0 z-40 bg-[var(--ink)]/85 backdrop-blur-xl border-b border-white/10">
         <div className="container-x flex items-center justify-between py-3">
           <a href="#top" className="flex items-center gap-2">
-            <span className="grid h-10 w-10 place-items-center rounded-md bg-primary text-white font-display font-black text-lg">M</span>
-            <span className="font-display font-black text-white text-xl tracking-wide">
-              MACK <span className="text-primary">AUTO SERVICE</span>
-            </span>
+            <img src={mackLogo.url} alt="MACK Auto Service" width={160} height={48} className="h-10 md:h-12 w-auto drop-shadow-[0_0_18px_rgba(0,191,255,0.45)]" />
           </a>
           <nav className="hidden md:flex items-center gap-6 text-white/80 text-sm font-medium">
-            <a href="#servicos" className="hover:text-white">Serviços</a>
-            <a href="#diferenciais" className="hover:text-white">Diferenciais</a>
-            <a href="#avaliacoes" className="hover:text-white">Avaliações</a>
-            <a href="#faq" className="hover:text-white">FAQ</a>
-            <a href="#contato" className="hover:text-white">Contato</a>
+            <a href="#servicos" className="hover:text-primary transition">Serviços</a>
+            <a href="#diferenciais" className="hover:text-primary transition">Diferenciais</a>
+            <a href="#avaliacoes" className="hover:text-primary transition">Avaliações</a>
+            <a href="#faq" className="hover:text-primary transition">FAQ</a>
+            <a href="#contato" className="hover:text-primary transition">Contato</a>
           </nav>
           <a
             href={wa("Olá! Gostaria de solicitar um orçamento.")}
             onClick={() => trackWhats("header")}
-            className="btn-whats hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold"
+            className="btn-primary hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold"
           >
             <MessageCircle className="h-4 w-4" /> WhatsApp
           </a>
         </div>
       </header>
 
-      <section id="top" className="relative isolate overflow-hidden">
+      <section id="top" className="relative isolate overflow-hidden bg-[var(--ink)]">
         <img
           src={heroImg}
           alt="Oficina mecânica Mack Auto Service em São Paulo"
           width={1920}
           height={1080}
-          className="absolute inset-0 h-full w-full object-cover -z-10"
+          className="absolute inset-0 h-full w-full object-cover opacity-40 -z-10"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[var(--ink)]/95 via-[var(--ink)]/80 to-[var(--ink)]/40" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/90 to-[var(--ink)]/60" />
+        <div className="absolute inset-0 -z-10 grid-tech opacity-60" />
+        <div className="absolute -top-32 -right-32 -z-10 h-96 w-96 rounded-full bg-primary/30 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 -z-10 h-72 w-72 rounded-full bg-[var(--neon)]/20 blur-3xl" />
+
         <div className="container-x py-20 md:py-32 text-white">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary/15 border border-primary/40 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-              <ShieldCheck className="h-3.5 w-3.5" /> Centro Automotivo Premium
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+              <ShieldCheck className="h-3.5 w-3.5" /> Centro Automotivo Premium · São Paulo
             </span>
-            <h1 className="mt-4 font-display font-black text-4xl sm:text-5xl md:text-6xl leading-[1.05] uppercase text-balance">
-              Seu carro está dando <span className="text-primary">sinais de problema?</span>
+            <h1 className="mt-5 font-display font-black text-4xl sm:text-5xl md:text-6xl leading-[1.02] uppercase text-balance">
+              Mecânica de <span className="text-primary text-glow">confiança</span> para quem não quer dor de cabeça com o carro
             </h1>
-            <p className="mt-5 text-lg text-white/90">
-              Evite gastos maiores com uma avaliação especializada e atendimento transparente.
-            </p>
-            <p className="mt-2 text-white/70">
-              Diagnóstico preciso, profissionais qualificados e serviços executados com segurança e qualidade.
+            <p className="mt-5 text-lg text-white/90 max-w-2xl">
+              Diagnóstico preciso, transparência total e serviços executados por especialistas.
             </p>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-3">
               <a
                 href={wa("Olá! Quero solicitar um orçamento para meu veículo.")}
                 onClick={() => trackWhats("hero_primary")}
-                className="btn-whats inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide"
+                className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide"
               >
-                <MessageCircle className="h-5 w-5" /> Solicitar Orçamento pelo WhatsApp
+                <MessageCircle className="h-5 w-5" /> Solicitar Orçamento no WhatsApp
               </a>
               <a
                 href="#mapa"
-                className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-white/30 hover:border-white px-6 py-4 font-bold uppercase tracking-wide text-white"
+                className="btn-outline-neon inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide"
               >
                 <MapPin className="h-5 w-5" /> Como Chegar
               </a>
             </div>
 
-            <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-white/90">
+            <ul className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-white/90">
               {[
-                "Mais de 220 avaliações no Google",
+                "+220 avaliações 4,6★ no Google",
                 "Atendimento especializado",
                 "Transparência nos serviços",
-                "Localização fácil em São Paulo",
+                "Garantia em todos os reparos",
               ].map((t) => (
-                <li key={t} className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-[var(--whats)]" /> {t}
+                <li key={t} className="flex items-center gap-2 glass rounded-md px-3 py-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary" /> {t}
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        <div className="diag-stripe h-2 w-full" />
+        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-primary to-transparent" />
       </section>
 
       <section className="bg-[var(--surface)]">
@@ -457,11 +456,8 @@ function Index() {
       <footer id="contato" className="bg-[#0d0d0d] text-white/80">
         <div className="container-x py-14 grid md:grid-cols-3 gap-10">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="grid h-10 w-10 place-items-center rounded-md bg-primary font-display font-black text-white">M</span>
-              <span className="font-display font-black text-xl text-white">MACK <span className="text-primary">AUTO SERVICE</span></span>
-            </div>
-            <p className="mt-4 text-sm">Centro automotivo com atendimento transparente, técnico e ágil em São Paulo.</p>
+            <img src={mackLogo.url} alt="MACK Auto Service" width={180} height={56} className="h-12 w-auto" />
+            <p className="mt-4 text-sm">Centro automotivo premium com atendimento transparente, técnico e ágil em São Paulo.</p>
           </div>
           <div>
             <h3 className="font-display font-bold uppercase text-white">Contato</h3>
