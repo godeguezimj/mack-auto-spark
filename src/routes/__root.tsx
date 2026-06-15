@@ -87,10 +87,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "pt_BR" },
       { property: "og:site_name", content: "Mack Auto Service" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "theme-color", content: "#D60000" },
+      { name: "theme-color", content: "#00BFFF" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", href: "/__l5e/assets-v1/70c3e650-ce9d-41bb-896c-d3d57d66620b/mack-logo.png" },
+      { rel: "apple-touch-icon", href: "/__l5e/assets-v1/70c3e650-ce9d-41bb-896c-d3d57d66620b/mack-logo.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" },
