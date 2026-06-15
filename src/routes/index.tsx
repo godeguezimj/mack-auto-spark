@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Phone, MessageCircle, MapPin, Star, ShieldCheck, Wrench, Gauge,
   Cog, Snowflake, Zap, Car, Disc, Settings, Sparkles, CheckCircle2,
-  AlertTriangle, Volume2, Fuel, LampDesk, ChevronDown, Clock, Award,
+  AlertTriangle, Volume2, Fuel, LampDesk, ChevronDown, Clock, Users,
 } from "lucide-react";
 import heroImg from "@/assets/hero-oficina.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
@@ -52,18 +52,36 @@ const diffs = [
 ];
 
 const reviews = [
-  { name: "Carlos M.", text: "Atendimento excelente, oficina organizada e muito transparente." },
-  { name: "Aline R.", text: "Resolveram um problema que outras oficinas não encontraram." },
-  { name: "Rodrigo P.", text: "Preço justo e serviço de qualidade. Voltarei sempre." },
+  { name: "Carlos M.", text: "Atendimento excelente, oficina organizada e muito transparente. Explicaram cada serviço antes de executar." },
+  { name: "Aline R.", text: "Resolveram um problema elétrico que outras 3 oficinas não encontraram. Voltarei sempre." },
+  { name: "Rodrigo P.", text: "Preço justo e serviço de qualidade. Recebi fotos das peças antes da troca, super honesto." },
+  { name: "Fernanda S.", text: "Levei meu Jetta para revisão e fiquei impressionada com a organização e o cuidado da equipe." },
+  { name: "Marcos L.", text: "Diagnóstico preciso, orçamento detalhado e prazo cumprido. Recomendo de olhos fechados." },
+  { name: "Patrícia A.", text: "Único lugar onde me sinto segura levando meu carro. Atendimento humano e técnico." },
 ];
 
-const faqs = [
-  { q: "Quanto custa uma revisão automotiva?", a: "O valor depende do modelo do veículo e dos serviços necessários. Faça um orçamento gratuito pelo WhatsApp." },
-  { q: "Quanto tempo demora uma revisão?", a: "Na maioria dos casos a avaliação inicial é feita rapidamente, no mesmo dia." },
-  { q: "Vocês trabalham com carros nacionais e importados?", a: "Sim, atendemos todas as marcas, nacionais e importadas." },
-  { q: "Os serviços possuem garantia?", a: "Sim. Todos os serviços possuem garantia. Consulte as condições durante o atendimento." },
-  { q: "Preciso agendar?", a: "Recomendamos agendamento pelo WhatsApp para um atendimento mais rápido." },
+const trustPoints = [
+  "Explicamos tudo antes de executar o serviço",
+  "Orçamento transparente, sem surpresas",
+  "Sem troca desnecessária de peças",
+  "Garantia em todos os serviços executados",
+  "Atendimento especializado e consultivo",
+  "Equipe experiente com anos de oficina",
 ];
+
+const brands = ["Bosch", "NGK", "Mobil", "Castrol", "Shell", "Mann Filter"];
+
+const faqs = [
+  { q: "Vocês cobram pelo orçamento?", a: "Não. O orçamento e a avaliação inicial são totalmente gratuitos. Você só aprova o serviço se quiser seguir em frente." },
+  { q: "Vocês mostram o problema antes de arrumar?", a: "Sim, sempre. Mostramos a peça, explicamos o defeito e só executamos o serviço após a sua aprovação." },
+  { q: "Trabalham com garantia?", a: "Sim. Todos os serviços executados possuem garantia. As condições são apresentadas no orçamento." },
+  { q: "Atendem carros nacionais e importados?", a: "Sim, atendemos veículos nacionais e importados de todas as marcas com equipamentos modernos." },
+  { q: "Posso parcelar o serviço?", a: "Sim, oferecemos opções de parcelamento. Fale com a nossa equipe pelo WhatsApp para conhecer as condições." },
+  { q: "Preciso agendar?", a: "Recomendamos agendamento pelo WhatsApp para um atendimento mais rápido e organizado." },
+];
+
+const CTA_PRIMARY = "FALAR COM UM MECÂNICO AGORA";
+const CTA_SECONDARY = "RECEBER AVALIAÇÃO PELO WHATSAPP";
 
 function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -78,6 +96,45 @@ function Index() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Tracking: scroll depth + time on page (Google Ads / GA4 / Meta Pixel ready)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const dl = ((window as any).dataLayer = (window as any).dataLayer || []);
+    const fbq = (window as any).fbq;
+    const reached: Record<number, boolean> = {};
+    const start = Date.now();
+
+    const onScroll = () => {
+      const h = document.documentElement;
+      const pct = Math.round(((window.scrollY + window.innerHeight) / h.scrollHeight) * 100);
+      [25, 50, 75, 90].forEach((m) => {
+        if (pct >= m && !reached[m]) {
+          reached[m] = true;
+          dl.push({ event: "scroll_depth", percent: m });
+          if (fbq) fbq("trackCustom", "ScrollDepth", { percent: m });
+        }
+      });
+    };
+    const ticks = [15, 30, 60, 120];
+    const timers = ticks.map((s) =>
+      setTimeout(() => {
+        dl.push({ event: "time_on_page", seconds: s });
+        if (fbq) fbq("trackCustom", "TimeOnPage", { seconds: s });
+      }, s * 1000)
+    );
+    const onUnload = () => {
+      const seconds = Math.round((Date.now() - start) / 1000);
+      dl.push({ event: "session_duration", seconds });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("beforeunload", onUnload);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("beforeunload", onUnload);
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   return (
@@ -112,7 +169,7 @@ function Index() {
             <a href="#contato" className="hover:text-primary transition">Contato</a>
           </nav>
           <a
-            href={wa("Olá! Gostaria de solicitar um orçamento.")}
+            href={wa(`Olá! Quero ${CTA_SECONDARY.toLowerCase()}.`)}
             onClick={() => trackWhats("header")}
             className="btn-primary hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold"
           >
@@ -134,70 +191,162 @@ function Index() {
         <div className="absolute -top-32 -right-32 -z-10 h-96 w-96 rounded-full bg-primary/30 blur-3xl" />
         <div className="absolute bottom-0 left-1/3 -z-10 h-72 w-72 rounded-full bg-[var(--neon)]/20 blur-3xl" />
 
-        <div className="container-x py-20 md:py-32 text-white">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-              <ShieldCheck className="h-3.5 w-3.5" /> Centro Automotivo Premium · São Paulo
-            </span>
-            <h1 className="mt-5 font-display font-black text-4xl sm:text-5xl md:text-6xl leading-[1.02] uppercase text-balance">
-              Mecânica de <span className="text-primary text-glow">confiança</span> para quem não quer dor de cabeça com o carro
-            </h1>
-            <p className="mt-5 text-lg text-white/90 max-w-2xl">
-              Diagnóstico preciso, transparência total e serviços executados por especialistas.
-            </p>
+        <div className="container-x py-16 md:py-24 text-white">
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
+            <div className="max-w-2xl">
+              <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+                <ShieldCheck className="h-3.5 w-3.5" /> Atendimento com transparência e garantia
+              </span>
+              <h1 className="mt-5 font-display font-black text-3xl sm:text-5xl md:text-6xl leading-[1.02] uppercase text-balance">
+                Seu carro está fazendo <span className="text-primary text-glow">barulhos</span>, acendendo <span className="text-primary text-glow">luzes no painel</span> ou apresentando <span className="text-primary text-glow">falhas?</span>
+              </h1>
+              <p className="mt-5 text-lg text-white/90">
+                Receba uma avaliação especializada e descubra o problema antes que o prejuízo aumente.
+              </p>
 
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <a
-                href={wa("Olá! Quero solicitar um orçamento para meu veículo.")}
-                onClick={() => trackWhats("hero_primary")}
-                className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide"
-              >
-                <MessageCircle className="h-5 w-5" /> Solicitar Orçamento no WhatsApp
-              </a>
-              <a
-                href="#mapa"
-                className="btn-outline-neon inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide"
-              >
-                <MapPin className="h-5 w-5" /> Como Chegar
-              </a>
+              <div className="mt-7 flex flex-col sm:flex-row gap-3">
+                <a
+                  href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()} sobre meu veículo.`)}
+                  onClick={() => trackWhats("hero_primary")}
+                  className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base"
+                >
+                  <MessageCircle className="h-5 w-5" /> {CTA_PRIMARY}
+                </a>
+                <a
+                  href="#mapa"
+                  className="btn-outline-neon inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base"
+                >
+                  <MapPin className="h-5 w-5" /> Como Chegar
+                </a>
+              </div>
+
+              <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-white/90">
+                {[
+                  "+220 avaliações 4,6★ no Google",
+                  "Atendimento especializado",
+                  "Transparência nos serviços",
+                  "Garantia em todos os reparos",
+                ].map((t) => (
+                  <li key={t} className="flex items-center gap-2 glass rounded-md px-3 py-2">
+                    <CheckCircle2 className="h-4 w-4 text-primary" /> {t}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <ul className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-white/90">
-              {[
-                "+220 avaliações 4,6★ no Google",
-                "Atendimento especializado",
-                "Transparência nos serviços",
-                "Garantia em todos os reparos",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-2 glass rounded-md px-3 py-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary" /> {t}
-                </li>
-              ))}
-            </ul>
+            {/* Hero card de prova social */}
+            <aside className="glass rounded-2xl p-6 md:p-7 neon-glow">
+              <div className="flex items-center gap-3">
+                <div className="flex">
+                  {[1,2,3,4,5].map(i => <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />)}
+                </div>
+                <div className="font-display font-black text-3xl text-white">4,6</div>
+                <div className="text-xs text-white/70 leading-tight">no<br/>Google</div>
+              </div>
+              <div className="mt-3 font-display font-bold uppercase text-xl text-white">+220 Avaliações Reais</div>
+              <p className="mt-2 text-sm text-white/80">Clientes que voltaram porque encontraram atendimento honesto e técnico.</p>
+
+              <div className="mt-5 rounded-xl bg-primary/15 border border-primary/40 p-4">
+                <div className="flex items-center gap-2 text-primary font-display font-bold uppercase text-sm">
+                  <ShieldCheck className="h-4 w-4" /> Atendimento com transparência e garantia
+                </div>
+                <p className="mt-1 text-xs text-white/80">Mostramos o problema antes de executar qualquer serviço.</p>
+              </div>
+
+              <a
+                href={wa(`Olá! Quero ${CTA_SECONDARY.toLowerCase()}.`)}
+                onClick={() => trackWhats("hero_card")}
+                className="btn-primary mt-5 w-full inline-flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-bold uppercase"
+              >
+                <MessageCircle className="h-4 w-4" /> {CTA_SECONDARY}
+              </a>
+            </aside>
           </div>
         </div>
         <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-primary to-transparent" />
       </section>
 
-      <section className="bg-[var(--surface)]">
-        <div className="container-x py-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex">
-              {[1,2,3,4,5].map(i => <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />)}
+      {/* OFERTA */}
+      <section className="relative bg-[var(--ink)] text-white overflow-hidden">
+        <div className="absolute inset-0 grid-tech opacity-30" />
+        <div className="container-x relative py-12 md:py-14">
+          <div className="rounded-2xl glass p-6 md:p-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-10 neon-glow">
+            <div className="flex-shrink-0 grid place-items-center h-16 w-16 rounded-xl bg-primary text-white">
+              <Sparkles className="h-8 w-8" />
             </div>
-            <div>
-              <div className="font-display font-bold text-xl">4,6 / 5</div>
-              <div className="text-xs text-muted-foreground">+220 avaliações no Google</div>
+            <div className="flex-1">
+              <div className="text-primary font-semibold uppercase text-xs tracking-widest">Oferta por tempo limitado</div>
+              <h2 className="mt-1 font-display font-black text-2xl md:text-4xl uppercase">
+                Check-up Automotivo <span className="text-primary text-glow">Gratuito*</span>
+              </h2>
+              <p className="mt-2 text-white/85">Diagnóstico inicial para identificar possíveis problemas no veículo.</p>
+              <p className="mt-1 text-xs text-white/60">*Consulte condições.</p>
             </div>
+            <a
+              href={wa("Olá! Quero AGENDAR CHECK-UP PELO WHATSAPP.")}
+              onClick={() => trackWhats("oferta_checkup")}
+              className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base whitespace-nowrap"
+            >
+              <MessageCircle className="h-5 w-5" /> Agendar Check-up pelo WhatsApp
+            </a>
           </div>
-          <div className="hidden md:flex items-center gap-2 text-sm">
-            <Award className="h-5 w-5 text-primary" /> Equipe qualificada
+        </div>
+      </section>
+
+      {/* PROVA SOCIAL — logo abaixo da oferta */}
+      <section id="avaliacoes" className="py-16 md:py-20 bg-background">
+        <div className="container-x">
+          <div className="text-center max-w-3xl mx-auto" data-reveal>
+            <div className="inline-flex items-center gap-3 rounded-full bg-[var(--surface)] border border-border px-4 py-2">
+              <div className="flex">
+                {[1,2,3,4,5].map(i => <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />)}
+              </div>
+              <div className="font-display font-black text-lg">4,6 / 5</div>
+              <div className="text-sm text-muted-foreground">· +220 Avaliações Google</div>
+            </div>
+            <h2 className="mt-4 font-display font-black text-3xl md:text-5xl uppercase">
+              Clientes que <span className="text-primary">confiam na MACK</span>
+            </h2>
+            <p className="mt-3 text-muted-foreground">Avaliações reais de quem já passou pela nossa oficina.</p>
           </div>
-          <div className="hidden md:flex items-center gap-2 text-sm">
-            <ShieldCheck className="h-5 w-5 text-primary" /> Serviço com garantia
+
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {reviews.map((r) => (
+              <figure key={r.name} data-reveal className="rounded-xl bg-card border border-border p-6 shadow-sm hover:shadow-lg hover:border-primary/40 transition">
+                <div className="flex items-center justify-between">
+                  <div className="flex">
+                    {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+                  </div>
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.99.66-2.25 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.44.34-2.11V7.05H2.18A11 11 0 0 0 1 12c0 1.78.43 3.46 1.18 4.95l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+                </div>
+                <blockquote className="mt-3 text-foreground leading-relaxed text-sm">"{r.text}"</blockquote>
+                <figcaption className="mt-4 flex items-center gap-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-full bg-primary text-white font-bold">
+                    {r.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-sm">{r.name}</div>
+                    <div className="text-xs text-muted-foreground">Cliente verificado · Google</div>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
           </div>
-          <div className="hidden md:flex items-center gap-2 text-sm">
-            <Clock className="h-5 w-5 text-primary" /> Agilidade na entrega
+        </div>
+      </section>
+
+      {/* LOGOS DE MARCAS */}
+      <section className="py-12 bg-[var(--surface)] border-y border-border">
+        <div className="container-x">
+          <div className="text-center font-display font-bold uppercase text-sm tracking-widest text-muted-foreground">
+            Trabalhamos com peças e produtos de qualidade
+          </div>
+          <div className="mt-6 grid grid-cols-3 md:grid-cols-6 gap-6 items-center">
+            {brands.map((b) => (
+              <div key={b} className="text-center font-display font-black text-xl md:text-2xl uppercase tracking-wider text-foreground/40 grayscale hover:text-primary hover:grayscale-0 transition">
+                {b}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -226,11 +375,11 @@ function Index() {
 
           <div className="mt-10 text-center" data-reveal>
             <a
-              href={wa("Olá! Gostaria de agendar uma avaliação do meu veículo.")}
+              href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()} sobre meu veículo.`)}
               onClick={() => trackWhats("dores_cta")}
               className="btn-primary inline-flex items-center gap-2 rounded-md px-7 py-4 font-bold uppercase tracking-wide"
             >
-              <MessageCircle className="h-5 w-5" /> Agende uma Avaliação Agora
+              <MessageCircle className="h-5 w-5" /> {CTA_PRIMARY}
             </a>
           </div>
         </div>
@@ -257,9 +406,9 @@ function Index() {
                 <a
                   href={wa(`Olá! Quero um orçamento para: ${title}`)}
                   onClick={() => trackWhats(`servico_${title}`)}
-                  className="btn-whats mt-5 inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-bold uppercase"
+                  className="btn-primary mt-5 inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-bold uppercase"
                 >
-                  <MessageCircle className="h-4 w-4" /> Solicitar Orçamento
+                  <MessageCircle className="h-4 w-4" /> Receber Avaliação
                 </a>
               </article>
             ))}
@@ -286,36 +435,65 @@ function Index() {
         </div>
       </section>
 
-      <section id="avaliacoes" className="py-20 bg-background">
+      {/* POR QUE NOSSOS CLIENTES VOLTAM (confiança) */}
+      <section className="py-20 bg-background">
         <div className="container-x">
           <div className="text-center max-w-3xl mx-auto" data-reveal>
-            <div className="flex justify-center mb-3">
-              {[1,2,3,4,5].map(i => <Star key={i} className="h-7 w-7 fill-yellow-400 text-yellow-400" />)}
-            </div>
-            <h2 className="font-display font-black text-3xl md:text-5xl uppercase">
-              <span className="text-primary">+220 avaliações</span> de clientes
+            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Confiança</span>
+            <h2 className="mt-2 font-display font-black text-3xl md:text-5xl uppercase">
+              Por que nossos clientes <span className="text-primary">voltam?</span>
             </h2>
-            <p className="mt-3 text-muted-foreground">Veja o que dizem sobre nosso atendimento.</p>
+            <p className="mt-3 text-muted-foreground">Atendimento honesto, técnico e sem enrolação. Esse é o nosso compromisso.</p>
           </div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {reviews.map((r) => (
-              <figure key={r.name} data-reveal className="rounded-xl bg-card border border-border p-6 shadow-sm">
-                <div className="flex">
-                  {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {trustPoints.map((t) => (
+              <div key={t} data-reveal className="flex items-start gap-4 rounded-xl bg-card border border-border p-6 hover:border-primary hover:shadow-lg transition">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+                  <CheckCircle2 className="h-6 w-6" />
                 </div>
-                <blockquote className="mt-3 text-foreground leading-relaxed">"{r.text}"</blockquote>
-                <figcaption className="mt-4 flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-full bg-primary text-white font-bold">
-                    {r.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-sm">{r.name}</div>
-                    <div className="text-xs text-muted-foreground">Cliente verificado</div>
-                  </div>
-                </figcaption>
-              </figure>
+                <p className="font-display font-bold uppercase text-base md:text-lg leading-snug">{t}</p>
+              </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EQUIPE */}
+      <section className="py-20 bg-[var(--surface)]">
+        <div className="container-x">
+          <div className="text-center max-w-3xl mx-auto" data-reveal>
+            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Nossa Equipe</span>
+            <h2 className="mt-2 font-display font-black text-3xl md:text-5xl uppercase">
+              Conheça <span className="text-primary">nossa equipe</span>
+            </h2>
+            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
+              Mecânicos experientes, treinados em diagnóstico moderno e apaixonados pelo que fazem. Cada veículo é tratado como se fosse nosso.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {["Equipe Mack Auto Service", "Box de diagnóstico", "Bancada técnica"].map((label) => (
+              <div key={label} data-reveal className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-[var(--ink)]">
+                <div className="absolute inset-0 grid-tech opacity-25" />
+                <div className="absolute inset-0 grid place-items-center text-center p-6">
+                  <div>
+                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/15 text-primary">
+                      <Users className="h-7 w-7" />
+                    </div>
+                    <div className="mt-3 font-display font-bold uppercase text-white text-lg">{label}</div>
+                    <div className="text-xs text-white/60 mt-1">Foto real em breve</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 text-center" data-reveal>
+            <a
+              href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
+              onClick={() => trackWhats("equipe_cta")}
+              className="btn-primary inline-flex items-center gap-2 rounded-md px-7 py-4 font-bold uppercase tracking-wide"
+            >
+              <MessageCircle className="h-5 w-5" /> {CTA_PRIMARY}
+            </a>
           </div>
         </div>
       </section>
@@ -396,7 +574,7 @@ function Index() {
               title="Localização Mack Auto Service"
               src="https://www.google.com/maps?q=R.+Carneiro+da+Cunha,+913+-+Vila+da+Saude,+Sao+Paulo&output=embed"
               width="100%"
-              height="450"
+              height="240"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="w-full"
@@ -433,22 +611,27 @@ function Index() {
         </div>
       </section>
 
+      {/* URGÊNCIA + CTA FINAL */}
       <section className="relative py-24 bg-[var(--ink)] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10 diag-stripe" />
-        <div className="container-x relative text-center max-w-3xl" data-reveal>
+        <div className="absolute inset-0 grid-tech opacity-25" />
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
+        <div className="container-x relative text-center max-w-3xl mx-auto" data-reveal>
           <AlertTriangle className="h-12 w-12 text-primary mx-auto" />
           <h2 className="mt-4 font-display font-black text-3xl md:text-5xl uppercase text-balance">
-            Não espere o problema <span className="text-primary">aumentar</span>
+            Não espere o problema <span className="text-primary text-glow">piorar.</span>
           </h2>
-          <p className="mt-4 text-white/80 text-lg">
-            Quanto antes o defeito for identificado, menor será o custo do reparo.
+          <p className="mt-4 text-white/85 text-lg">
+            Pequenos defeitos podem se transformar em grandes prejuízos.
+          </p>
+          <p className="mt-2 text-white/75">
+            Quanto antes identificar o problema, menor será o custo do reparo.
           </p>
           <a
-            href={wa("Olá! Quero falar com um especialista agora.")}
+            href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
             onClick={() => trackWhats("cta_final")}
-            className="btn-whats mt-8 inline-flex items-center gap-2 rounded-md px-8 py-5 text-lg font-bold uppercase tracking-wide"
+            className="btn-primary mt-8 inline-flex items-center gap-2 rounded-md px-8 py-5 text-base md:text-lg font-bold uppercase tracking-wide"
           >
-            <MessageCircle className="h-6 w-6" /> Falar com um Especialista Agora
+            <MessageCircle className="h-6 w-6" /> {CTA_PRIMARY}
           </a>
         </div>
       </section>
@@ -486,24 +669,22 @@ function Index() {
       </footer>
 
       <a
-        href={wa("Olá! Gostaria de um orçamento.")}
+        href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
         onClick={() => trackWhats("float_button")}
         aria-label="Falar no WhatsApp"
-        className="btn-whats pulse-ring fixed bottom-20 md:bottom-6 right-5 z-50 grid h-14 w-14 place-items-center rounded-full shadow-xl"
+        className="btn-primary pulse-ring fixed bottom-20 md:bottom-6 right-5 z-50 grid h-14 w-14 place-items-center rounded-full shadow-xl"
       >
         <MessageCircle className="h-7 w-7" />
       </a>
 
-      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--ink)] border-t border-white/10 p-3 grid grid-cols-2 gap-2">
-        <a href="tel:+5511978896108" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 text-white py-3 text-sm font-bold uppercase">
-          <Phone className="h-4 w-4" /> Ligar
-        </a>
+      {/* CTA fixa mobile — sempre visível */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--ink)] border-t border-primary/40 p-3">
         <a
-          href={wa("Olá! Quero um orçamento.")}
+          href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
           onClick={() => trackWhats("mobile_sticky")}
-          className="btn-whats inline-flex items-center justify-center gap-2 rounded-md py-3 text-sm font-bold uppercase"
+          className="btn-primary w-full inline-flex items-center justify-center gap-2 rounded-md py-3.5 text-sm font-bold uppercase tracking-wide"
         >
-          <MessageCircle className="h-4 w-4" /> WhatsApp
+          <MessageCircle className="h-5 w-5" /> Falar no WhatsApp
         </a>
       </div>
     </div>
