@@ -52,18 +52,36 @@ const diffs = [
 ];
 
 const reviews = [
-  { name: "Carlos M.", text: "Atendimento excelente, oficina organizada e muito transparente." },
-  { name: "Aline R.", text: "Resolveram um problema que outras oficinas não encontraram." },
-  { name: "Rodrigo P.", text: "Preço justo e serviço de qualidade. Voltarei sempre." },
+  { name: "Carlos M.", text: "Atendimento excelente, oficina organizada e muito transparente. Explicaram cada serviço antes de executar." },
+  { name: "Aline R.", text: "Resolveram um problema elétrico que outras 3 oficinas não encontraram. Voltarei sempre." },
+  { name: "Rodrigo P.", text: "Preço justo e serviço de qualidade. Recebi fotos das peças antes da troca, super honesto." },
+  { name: "Fernanda S.", text: "Levei meu Jetta para revisão e fiquei impressionada com a organização e o cuidado da equipe." },
+  { name: "Marcos L.", text: "Diagnóstico preciso, orçamento detalhado e prazo cumprido. Recomendo de olhos fechados." },
+  { name: "Patrícia A.", text: "Único lugar onde me sinto segura levando meu carro. Atendimento humano e técnico." },
 ];
 
-const faqs = [
-  { q: "Quanto custa uma revisão automotiva?", a: "O valor depende do modelo do veículo e dos serviços necessários. Faça um orçamento gratuito pelo WhatsApp." },
-  { q: "Quanto tempo demora uma revisão?", a: "Na maioria dos casos a avaliação inicial é feita rapidamente, no mesmo dia." },
-  { q: "Vocês trabalham com carros nacionais e importados?", a: "Sim, atendemos todas as marcas, nacionais e importadas." },
-  { q: "Os serviços possuem garantia?", a: "Sim. Todos os serviços possuem garantia. Consulte as condições durante o atendimento." },
-  { q: "Preciso agendar?", a: "Recomendamos agendamento pelo WhatsApp para um atendimento mais rápido." },
+const trustPoints = [
+  "Explicamos tudo antes de executar o serviço",
+  "Orçamento transparente, sem surpresas",
+  "Sem troca desnecessária de peças",
+  "Garantia em todos os serviços executados",
+  "Atendimento especializado e consultivo",
+  "Equipe experiente com anos de oficina",
 ];
+
+const brands = ["Bosch", "NGK", "Mobil", "Castrol", "Shell", "Mann Filter"];
+
+const faqs = [
+  { q: "Vocês cobram pelo orçamento?", a: "Não. O orçamento e a avaliação inicial são totalmente gratuitos. Você só aprova o serviço se quiser seguir em frente." },
+  { q: "Vocês mostram o problema antes de arrumar?", a: "Sim, sempre. Mostramos a peça, explicamos o defeito e só executamos o serviço após a sua aprovação." },
+  { q: "Trabalham com garantia?", a: "Sim. Todos os serviços executados possuem garantia. As condições são apresentadas no orçamento." },
+  { q: "Atendem carros nacionais e importados?", a: "Sim, atendemos veículos nacionais e importados de todas as marcas com equipamentos modernos." },
+  { q: "Posso parcelar o serviço?", a: "Sim, oferecemos opções de parcelamento. Fale com a nossa equipe pelo WhatsApp para conhecer as condições." },
+  { q: "Preciso agendar?", a: "Recomendamos agendamento pelo WhatsApp para um atendimento mais rápido e organizado." },
+];
+
+const CTA_PRIMARY = "FALAR COM UM MECÂNICO AGORA";
+const CTA_SECONDARY = "RECEBER AVALIAÇÃO PELO WHATSAPP";
 
 function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -78,6 +96,45 @@ function Index() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Tracking: scroll depth + time on page (Google Ads / GA4 / Meta Pixel ready)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const dl = ((window as any).dataLayer = (window as any).dataLayer || []);
+    const fbq = (window as any).fbq;
+    const reached: Record<number, boolean> = {};
+    const start = Date.now();
+
+    const onScroll = () => {
+      const h = document.documentElement;
+      const pct = Math.round(((window.scrollY + window.innerHeight) / h.scrollHeight) * 100);
+      [25, 50, 75, 90].forEach((m) => {
+        if (pct >= m && !reached[m]) {
+          reached[m] = true;
+          dl.push({ event: "scroll_depth", percent: m });
+          if (fbq) fbq("trackCustom", "ScrollDepth", { percent: m });
+        }
+      });
+    };
+    const ticks = [15, 30, 60, 120];
+    const timers = ticks.map((s) =>
+      setTimeout(() => {
+        dl.push({ event: "time_on_page", seconds: s });
+        if (fbq) fbq("trackCustom", "TimeOnPage", { seconds: s });
+      }, s * 1000)
+    );
+    const onUnload = () => {
+      const seconds = Math.round((Date.now() - start) / 1000);
+      dl.push({ event: "session_duration", seconds });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("beforeunload", onUnload);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("beforeunload", onUnload);
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   return (
