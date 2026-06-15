@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Phone, MessageCircle, MapPin, Star, ShieldCheck, Wrench, Gauge,
   Cog, Snowflake, Zap, Car, Disc, Settings, Sparkles, CheckCircle2,
-  AlertTriangle, Volume2, Fuel, LampDesk, ChevronDown, Clock, Award,
+  AlertTriangle, Volume2, Fuel, LampDesk, ChevronDown, Clock, Award, Users, ThumbsUp,
 } from "lucide-react";
 import heroImg from "@/assets/hero-oficina.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
@@ -375,11 +375,11 @@ function Index() {
 
           <div className="mt-10 text-center" data-reveal>
             <a
-              href={wa("Olá! Gostaria de agendar uma avaliação do meu veículo.")}
+              href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()} sobre meu veículo.`)}
               onClick={() => trackWhats("dores_cta")}
               className="btn-primary inline-flex items-center gap-2 rounded-md px-7 py-4 font-bold uppercase tracking-wide"
             >
-              <MessageCircle className="h-5 w-5" /> Agende uma Avaliação Agora
+              <MessageCircle className="h-5 w-5" /> {CTA_PRIMARY}
             </a>
           </div>
         </div>
@@ -406,9 +406,9 @@ function Index() {
                 <a
                   href={wa(`Olá! Quero um orçamento para: ${title}`)}
                   onClick={() => trackWhats(`servico_${title}`)}
-                  className="btn-whats mt-5 inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-bold uppercase"
+                  className="btn-primary mt-5 inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-bold uppercase"
                 >
-                  <MessageCircle className="h-4 w-4" /> Solicitar Orçamento
+                  <MessageCircle className="h-4 w-4" /> Receber Avaliação
                 </a>
               </article>
             ))}
@@ -435,36 +435,65 @@ function Index() {
         </div>
       </section>
 
-      <section id="avaliacoes" className="py-20 bg-background">
+      {/* POR QUE NOSSOS CLIENTES VOLTAM (confiança) */}
+      <section className="py-20 bg-background">
         <div className="container-x">
           <div className="text-center max-w-3xl mx-auto" data-reveal>
-            <div className="flex justify-center mb-3">
-              {[1,2,3,4,5].map(i => <Star key={i} className="h-7 w-7 fill-yellow-400 text-yellow-400" />)}
-            </div>
-            <h2 className="font-display font-black text-3xl md:text-5xl uppercase">
-              <span className="text-primary">+220 avaliações</span> de clientes
+            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Confiança</span>
+            <h2 className="mt-2 font-display font-black text-3xl md:text-5xl uppercase">
+              Por que nossos clientes <span className="text-primary">voltam?</span>
             </h2>
-            <p className="mt-3 text-muted-foreground">Veja o que dizem sobre nosso atendimento.</p>
+            <p className="mt-3 text-muted-foreground">Atendimento honesto, técnico e sem enrolação. Esse é o nosso compromisso.</p>
           </div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {reviews.map((r) => (
-              <figure key={r.name} data-reveal className="rounded-xl bg-card border border-border p-6 shadow-sm">
-                <div className="flex">
-                  {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {trustPoints.map((t) => (
+              <div key={t} data-reveal className="flex items-start gap-4 rounded-xl bg-card border border-border p-6 hover:border-primary hover:shadow-lg transition">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+                  <CheckCircle2 className="h-6 w-6" />
                 </div>
-                <blockquote className="mt-3 text-foreground leading-relaxed">"{r.text}"</blockquote>
-                <figcaption className="mt-4 flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-full bg-primary text-white font-bold">
-                    {r.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-sm">{r.name}</div>
-                    <div className="text-xs text-muted-foreground">Cliente verificado</div>
-                  </div>
-                </figcaption>
-              </figure>
+                <p className="font-display font-bold uppercase text-base md:text-lg leading-snug">{t}</p>
+              </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EQUIPE */}
+      <section className="py-20 bg-[var(--surface)]">
+        <div className="container-x">
+          <div className="text-center max-w-3xl mx-auto" data-reveal>
+            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Nossa Equipe</span>
+            <h2 className="mt-2 font-display font-black text-3xl md:text-5xl uppercase">
+              Conheça <span className="text-primary">nossa equipe</span>
+            </h2>
+            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
+              Mecânicos experientes, treinados em diagnóstico moderno e apaixonados pelo que fazem. Cada veículo é tratado como se fosse nosso.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {["Equipe Mack Auto Service", "Box de diagnóstico", "Bancada técnica"].map((label) => (
+              <div key={label} data-reveal className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-[var(--ink)]">
+                <div className="absolute inset-0 grid-tech opacity-25" />
+                <div className="absolute inset-0 grid place-items-center text-center p-6">
+                  <div>
+                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/15 text-primary">
+                      <Users className="h-7 w-7" />
+                    </div>
+                    <div className="mt-3 font-display font-bold uppercase text-white text-lg">{label}</div>
+                    <div className="text-xs text-white/60 mt-1">Foto real em breve</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 text-center" data-reveal>
+            <a
+              href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
+              onClick={() => trackWhats("equipe_cta")}
+              className="btn-primary inline-flex items-center gap-2 rounded-md px-7 py-4 font-bold uppercase tracking-wide"
+            >
+              <MessageCircle className="h-5 w-5" /> {CTA_PRIMARY}
+            </a>
           </div>
         </div>
       </section>
@@ -545,7 +574,7 @@ function Index() {
               title="Localização Mack Auto Service"
               src="https://www.google.com/maps?q=R.+Carneiro+da+Cunha,+913+-+Vila+da+Saude,+Sao+Paulo&output=embed"
               width="100%"
-              height="450"
+              height="240"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="w-full"
@@ -582,22 +611,27 @@ function Index() {
         </div>
       </section>
 
+      {/* URGÊNCIA + CTA FINAL */}
       <section className="relative py-24 bg-[var(--ink)] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10 diag-stripe" />
-        <div className="container-x relative text-center max-w-3xl" data-reveal>
+        <div className="absolute inset-0 grid-tech opacity-25" />
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
+        <div className="container-x relative text-center max-w-3xl mx-auto" data-reveal>
           <AlertTriangle className="h-12 w-12 text-primary mx-auto" />
           <h2 className="mt-4 font-display font-black text-3xl md:text-5xl uppercase text-balance">
-            Não espere o problema <span className="text-primary">aumentar</span>
+            Não espere o problema <span className="text-primary text-glow">piorar.</span>
           </h2>
-          <p className="mt-4 text-white/80 text-lg">
-            Quanto antes o defeito for identificado, menor será o custo do reparo.
+          <p className="mt-4 text-white/85 text-lg">
+            Pequenos defeitos podem se transformar em grandes prejuízos.
+          </p>
+          <p className="mt-2 text-white/75">
+            Quanto antes identificar o problema, menor será o custo do reparo.
           </p>
           <a
-            href={wa("Olá! Quero falar com um especialista agora.")}
+            href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
             onClick={() => trackWhats("cta_final")}
-            className="btn-whats mt-8 inline-flex items-center gap-2 rounded-md px-8 py-5 text-lg font-bold uppercase tracking-wide"
+            className="btn-primary mt-8 inline-flex items-center gap-2 rounded-md px-8 py-5 text-base md:text-lg font-bold uppercase tracking-wide"
           >
-            <MessageCircle className="h-6 w-6" /> Falar com um Especialista Agora
+            <MessageCircle className="h-6 w-6" /> {CTA_PRIMARY}
           </a>
         </div>
       </section>
@@ -635,24 +669,22 @@ function Index() {
       </footer>
 
       <a
-        href={wa("Olá! Gostaria de um orçamento.")}
+        href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
         onClick={() => trackWhats("float_button")}
         aria-label="Falar no WhatsApp"
-        className="btn-whats pulse-ring fixed bottom-20 md:bottom-6 right-5 z-50 grid h-14 w-14 place-items-center rounded-full shadow-xl"
+        className="btn-primary pulse-ring fixed bottom-20 md:bottom-6 right-5 z-50 grid h-14 w-14 place-items-center rounded-full shadow-xl"
       >
         <MessageCircle className="h-7 w-7" />
       </a>
 
-      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--ink)] border-t border-white/10 p-3 grid grid-cols-2 gap-2">
-        <a href="tel:+5511978896108" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 text-white py-3 text-sm font-bold uppercase">
-          <Phone className="h-4 w-4" /> Ligar
-        </a>
+      {/* CTA fixa mobile — sempre visível */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--ink)] border-t border-primary/40 p-3">
         <a
-          href={wa("Olá! Quero um orçamento.")}
+          href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
           onClick={() => trackWhats("mobile_sticky")}
-          className="btn-whats inline-flex items-center justify-center gap-2 rounded-md py-3 text-sm font-bold uppercase"
+          className="btn-primary w-full inline-flex items-center justify-center gap-2 rounded-md py-3.5 text-sm font-bold uppercase tracking-wide"
         >
-          <MessageCircle className="h-4 w-4" /> WhatsApp
+          <MessageCircle className="h-5 w-5" /> Falar no WhatsApp
         </a>
       </div>
     </div>
