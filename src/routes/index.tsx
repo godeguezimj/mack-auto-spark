@@ -1,11 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  Phone, MessageCircle, MapPin, Star, ShieldCheck, Wrench, Gauge,
-  Cog, Zap, Car, Disc, Sparkles, CheckCircle2,
-  AlertTriangle, Volume2, Fuel, LampDesk, ChevronDown, Clock, Users,
+  Phone, MessageCircle, MapPin, Star, Sparkles,
+  AlertTriangle, ChevronDown, Clock,
   HelpCircle, X, List,
 } from "lucide-react";
+import {
+  ShockAbsorber, DashboardAlert, BrakeDisc, EngineBlock, ClimateVent,
+  FuelPump, ServiceClipboard, DiagnosticScanner, OilCan, Transmission,
+  Wheel, ShieldGuarantee, Mechanic, CertifiedPart, Stopwatch,
+  SpeechBubble, QuoteDocument,
+} from "@/components/auto-icons";
 import heroImg from "@/assets/hero-oficina.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
 
@@ -33,26 +38,30 @@ const trackWhats = (label: string) => {
 
 // Top services only — mais procurados
 const services = [
-  { icon: Wrench, title: "Revisão Preventiva", desc: "Checklist completo para manter seu carro seguro." },
-  { icon: Sparkles, title: "Troca de Óleo", desc: "Óleos e filtros de alta qualidade." },
-  { icon: Disc, title: "Freios", desc: "Pastilhas, discos e fluido para sua segurança." },
-  { icon: Car, title: "Suspensão", desc: "Amortecedores, molas, bandejas e buchas." },
-  { icon: Zap, title: "Injeção Eletrônica", desc: "Limpeza, regulagem e reparo." },
-  { icon: Gauge, title: "Diagnóstico", desc: "Scanner profissional para identificar falhas." },
+  { icon: ServiceClipboard, title: "Revisão Preventiva", desc: "Checklist completo para manter seu carro seguro." },
+  { icon: OilCan, title: "Troca de Óleo", desc: "Óleos e filtros de alta qualidade." },
+  { icon: BrakeDisc, title: "Freios", desc: "Pastilhas, discos e fluido para sua segurança." },
+  { icon: ShockAbsorber, title: "Suspensão", desc: "Amortecedores, molas, bandejas e buchas." },
+  { icon: DiagnosticScanner, title: "Injeção Eletrônica", desc: "Limpeza, regulagem e reparo." },
+  { icon: EngineBlock, title: "Diagnóstico", desc: "Scanner profissional para identificar falhas." },
 ];
 
 const pains = [
-  { icon: Volume2, title: "Barulhos estranhos", desc: "Pequenos ruídos podem virar grandes prejuízos." },
-  { icon: Fuel, title: "Consumo excessivo", desc: "Seu carro pode estar gastando mais do que deveria." },
-  { icon: LampDesk, title: "Luzes no painel", desc: "Não espere o problema piorar para agir." },
-  { icon: AlertTriangle, title: "Falta de segurança", desc: "Freios, suspensão e direção em dia." },
+  { icon: ShockAbsorber, title: "Barulhos estranhos", desc: "Pequenos ruídos podem virar grandes prejuízos." },
+  { icon: FuelPump, title: "Consumo excessivo", desc: "Seu carro pode estar gastando mais do que deveria." },
+  { icon: DashboardAlert, title: "Luzes no painel", desc: "Não espere o problema piorar para agir." },
+  { icon: BrakeDisc, title: "Falta de segurança", desc: "Freios, suspensão e direção em dia." },
 ];
 
-const diffs = [
-  "Atendimento transparente", "Diagnóstico profissional",
-  "Equipe qualificada", "Peças de qualidade",
-  "Serviço com garantia", "Orçamento sem compromisso",
-  "Comunicação clara", "Agilidade na entrega",
+const diffs: { icon: any; label: string }[] = [
+  { icon: ShieldGuarantee, label: "Atendimento transparente" },
+  { icon: DiagnosticScanner, label: "Diagnóstico profissional" },
+  { icon: Mechanic, label: "Equipe qualificada" },
+  { icon: CertifiedPart, label: "Peças de qualidade" },
+  { icon: ShieldGuarantee, label: "Serviço com garantia" },
+  { icon: QuoteDocument, label: "Orçamento sem compromisso" },
+  { icon: SpeechBubble, label: "Comunicação clara" },
+  { icon: Stopwatch, label: "Agilidade na entrega" },
 ];
 
 const reviews = [
@@ -85,10 +94,10 @@ const faqs = [
 ];
 
 const helpOptions = [
-  { icon: Volume2, label: "Carro fazendo barulho", msg: "Olá! Meu carro está fazendo BARULHO. Pode me ajudar?" },
-  { icon: LampDesk, label: "Luz acesa no painel", msg: "Olá! Tem uma LUZ ACESA no painel do meu carro. Pode me ajudar?" },
-  { icon: Disc, label: "Problema nos freios", msg: "Olá! Estou com PROBLEMA NOS FREIOS. Pode me ajudar?" },
-  { icon: Cog, label: "Motor falhando", msg: "Olá! Meu MOTOR está FALHANDO. Pode me ajudar?" },
+  { icon: ShockAbsorber, label: "Carro fazendo barulho", msg: "Olá! Meu carro está fazendo BARULHO. Pode me ajudar?" },
+  { icon: DashboardAlert, label: "Luz acesa no painel", msg: "Olá! Tem uma LUZ ACESA no painel do meu carro. Pode me ajudar?" },
+  { icon: BrakeDisc, label: "Problema nos freios", msg: "Olá! Estou com PROBLEMA NOS FREIOS. Pode me ajudar?" },
+  { icon: EngineBlock, label: "Motor falhando", msg: "Olá! Meu MOTOR está FALHANDO. Pode me ajudar?" },
   { icon: MessageCircle, label: "Falar com especialista", msg: "Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service." },
 ];
 
@@ -207,7 +216,7 @@ function Index() {
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-center">
             <div className="max-w-2xl">
               <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-[11px] md:text-xs font-semibold uppercase tracking-wider text-primary">
-                <ShieldCheck className="h-3.5 w-3.5" /> Transparência e garantia
+                <ShieldGuarantee className="h-3.5 w-3.5" /> Transparência e garantia
               </span>
               <h1 className="mt-3 font-display font-black text-2xl sm:text-4xl md:text-5xl leading-[1.02] uppercase text-balance">
                 Carro com <span className="text-primary text-glow">barulho</span>, <span className="text-primary text-glow">luz no painel</span> ou <span className="text-primary text-glow">falhas?</span>
@@ -234,8 +243,8 @@ function Index() {
 
               <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs md:text-sm text-white/85">
                 <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 Google</span>
-                <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> +220 avaliações</span>
-                <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> Oficina física em SP</span>
+                <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> +220 avaliações</span>
+                <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> Oficina física em SP</span>
               </div>
             </div>
 
@@ -268,13 +277,13 @@ function Index() {
         <div className="container-x py-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
             {[
-              { icon: ShieldCheck, label: "Garantia nos serviços" },
+              { icon: ShieldGuarantee, label: "Garantia nos serviços" },
               { icon: Star, label: "+220 avaliações" },
               { icon: MapPin, label: "Oficina física" },
-              { icon: Users, label: "Equipe especializada" },
+              { icon: Mechanic, label: "Equipe especializada" },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center justify-center gap-2 text-xs md:text-sm font-semibold uppercase tracking-wide">
-                <Icon className="h-4 w-4 md:h-5 md:w-5 text-primary shrink-0" />
+                <Icon className="auto-icon h-5 w-5 md:h-6 md:w-6 text-primary shrink-0" />
                 <span>{label}</span>
               </div>
             ))}
@@ -302,7 +311,7 @@ function Index() {
                 className="group rounded-xl border border-border bg-card p-4 md:p-6 hover:border-primary hover:shadow-lg transition"
               >
                 <div className="grid h-10 w-10 md:h-12 md:w-12 place-items-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition">
-                  <Icon className="h-5 w-5 md:h-6 md:w-6" />
+                  <Icon className="auto-icon h-6 w-6 md:h-7 md:w-7" />
                 </div>
                 <h3 className="mt-3 font-display font-bold text-sm md:text-xl uppercase">{title}</h3>
                 <p className="mt-1 text-xs md:text-sm text-muted-foreground hidden md:block">{desc}</p>
@@ -363,7 +372,7 @@ function Index() {
             {services.map(({ icon: Icon, title, desc }) => (
               <article key={title} data-reveal className="flex flex-col rounded-xl bg-card border border-border p-5 hover:shadow-xl hover:-translate-y-1 transition">
                 <div className="grid h-12 w-12 place-items-center rounded-lg bg-[var(--ink)] text-primary">
-                  <Icon className="h-6 w-6" />
+                  <Icon className="auto-icon h-7 w-7" />
                 </div>
                 <h3 className="mt-3 font-display font-bold text-base md:text-lg uppercase">{title}</h3>
                 <p className="mt-1 text-xs md:text-sm text-muted-foreground flex-1">{desc}</p>
@@ -446,10 +455,10 @@ function Index() {
             </h2>
           </div>
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {diffs.map((d) => (
-              <div key={d} data-reveal className="rounded-lg bg-white/5 border border-white/10 p-5 hover:bg-primary/10 hover:border-primary transition">
-                <CheckCircle2 className="h-7 w-7 text-primary" />
-                <div className="mt-3 font-display font-bold uppercase text-sm md:text-base">{d}</div>
+            {diffs.map(({ icon: Icon, label }) => (
+              <div key={label} data-reveal className="group auto-icon-tile rounded-lg bg-white/5 border border-white/10 p-5 hover:bg-primary/10 hover:border-primary transition">
+                <Icon className="auto-icon h-8 w-8 text-primary" />
+                <div className="mt-3 font-display font-bold uppercase text-sm md:text-base">{label}</div>
               </div>
             ))}
           </div>
@@ -468,7 +477,7 @@ function Index() {
             {trustPoints.map((t) => (
               <div key={t} data-reveal className="flex items-start gap-4 rounded-xl bg-card border border-border p-6 hover:border-primary hover:shadow-lg transition">
                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
-                  <CheckCircle2 className="h-6 w-6" />
+                  <ShieldGuarantee className="h-6 w-6" />
                 </div>
                 <p className="font-display font-bold uppercase text-base md:text-lg leading-snug">{t}</p>
               </div>
@@ -574,7 +583,7 @@ function Index() {
                 <div className="absolute inset-0 grid place-items-center text-center p-6">
                   <div>
                     <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/15 text-primary">
-                      <Users className="h-7 w-7" />
+                      <Mechanic className="h-7 w-7" />
                     </div>
                     <div className="mt-3 font-display font-bold uppercase text-white text-lg">{label}</div>
                     <div className="text-xs text-white/60 mt-1">Foto real em breve</div>
@@ -609,9 +618,9 @@ function Index() {
           </a>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs md:text-sm text-white/80">
             <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 no Google</span>
-            <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> +220 avaliações</span>
-            <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> Garantia em todos os serviços</span>
-            <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> Oficina física em SP</span>
+            <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> +220 avaliações</span>
+            <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> Garantia em todos os serviços</span>
+            <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> Oficina física em SP</span>
           </div>
         </div>
       </section>
