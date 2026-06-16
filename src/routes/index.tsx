@@ -302,7 +302,7 @@ function Index() {
               onClick={() => trackWhats("dores_cta")}
               className="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-4 font-bold uppercase tracking-wide"
             >
-              <MessageCircle className="h-5 w-5" /> Quero Resolver Esse Problema
+              <FaWhatsapp className="h-5 w-5" /> Quero Resolver Esse Problema
             </a>
           </div>
         </div>
