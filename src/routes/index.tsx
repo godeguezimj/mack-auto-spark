@@ -329,7 +329,7 @@ function Index() {
               onClick={() => trackWhats("oferta_checkup")}
               className="btn-primary cta-checkup inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base whitespace-nowrap"
             >
-              <MessageCircle className="h-5 w-5" /> Agendar Check-up
+              <FaWhatsapp className="h-5 w-5" /> Agendar Check-up
             </a>
           </div>
         </div>
