@@ -583,7 +583,7 @@ function Index() {
                 <div className="absolute inset-0 grid place-items-center text-center p-6">
                   <div>
                     <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/15 text-primary">
-                      <Users className="h-7 w-7" />
+                      <Mechanic className="h-7 w-7" />
                     </div>
                     <div className="mt-3 font-display font-bold uppercase text-white text-lg">{label}</div>
                     <div className="text-xs text-white/60 mt-1">Foto real em breve</div>
