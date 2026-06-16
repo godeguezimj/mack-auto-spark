@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Phone, MapPin, Star, Sparkles,
   AlertTriangle, ChevronDown, Clock,
-  HelpCircle, X, List,
+  HelpCircle, X,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import {
