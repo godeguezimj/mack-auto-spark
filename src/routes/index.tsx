@@ -65,14 +65,66 @@ const diffs: { icon: any; label: string }[] = [
   { icon: Stopwatch, label: "Agilidade na entrega" },
 ];
 
-const reviews = [
-  { name: "Carlos M.", text: "Atendimento excelente, oficina organizada e muito transparente. Explicaram cada serviço antes de executar." },
-  { name: "Aline R.", text: "Resolveram um problema elétrico que outras 3 oficinas não encontraram. Voltarei sempre." },
-  { name: "Rodrigo P.", text: "Preço justo e serviço de qualidade. Recebi fotos das peças antes da troca, super honesto." },
-  { name: "Fernanda S.", text: "Levei meu Jetta para revisão e fiquei impressionada com a organização e o cuidado da equipe." },
-  { name: "Marcos L.", text: "Diagnóstico preciso, orçamento detalhado e prazo cumprido. Recomendo de olhos fechados." },
-  { name: "Patrícia A.", text: "Único lugar onde me sinto segura levando meu carro. Atendimento humano e técnico." },
+const reviews: { name: string; time: string; text: string; color: string }[] = [
+  {
+    name: "Eric Marques",
+    time: "há 2 semanas",
+    color: "#1E88E5",
+    text: "Excelente serviço. Comprei um carro na Movida e foi necessário realizar manutenção no motor. O Bruno, Lucas e Camila me atenderam de forma extremamente transparente e prestativa. Resolveram toda a burocracia e entregaram o carro funcionando perfeitamente. Inclusive o veículo foi lavado antes da entrega. Serviço diferenciado e altamente recomendado.",
+  },
+  {
+    name: "Andréa Sudré",
+    time: "há 1 mês",
+    color: "#8E24AA",
+    text: "Quero registrar minha satisfação. O atendimento foi excelente, extremamente transparente e atencioso. Me senti segura durante todo o processo e fui orientada em cada etapa do serviço. Recomendo com certeza.",
+  },
+  {
+    name: "Eduardo Matos",
+    time: "há 1 mês",
+    color: "#43A047",
+    text: "A experiência foi excelente. Gostei da flexibilidade nas opções de peças e orçamentos, com alternativas acessíveis e de qualidade. O serviço foi rápido, eficiente e concluído no mesmo dia. O cuidado com o veículo superou minhas expectativas.",
+  },
+  {
+    name: "Ivan Souza",
+    time: "há 2 meses",
+    color: "#FB8C00",
+    text: "Depois de passar por várias oficinas, encontrei profissionais realmente qualificados. Trabalho bem executado, preço justo e atendimento de qualidade. Recomendo sem dúvidas.",
+  },
+  {
+    name: "Rebeka Azzolini",
+    time: "há 2 meses",
+    color: "#E53935",
+    text: "Tive um problema com meu carro e fui prontamente atendida pela equipe da Mack. O diagnóstico foi realizado na hora, me explicaram tudo com detalhes e mostraram exatamente onde estava o problema. Atendimento extremamente profissional.",
+  },
+  {
+    name: "Enzo Balsanelli Basso",
+    time: "há 3 meses",
+    color: "#00897B",
+    text: "Excelentes profissionais. O diferencial está na transparência e no cuidado com o cliente. Arrumaram meu carro com muita atenção e carinho. Recomendo fortemente.",
+  },
+  {
+    name: "Taumaturgo Meneses",
+    time: "há 3 meses",
+    color: "#5E35B1",
+    text: "Excelente atendimento, ágil e com análise detalhada do veículo. Estrutura impecável e um atendimento extremamente respeitoso. Ganharam mais um cliente.",
+  },
 ];
+
+const REVIEW_HIGHLIGHTS = [
+  "transparência", "transparente", "qualidade", "atendimento",
+  "confiança", "confiar", "agilidade", "ágil", "rápido",
+  "profissional", "profissionais", "recomendo", "recomendado", "recomendados",
+];
+
+function highlightReview(text: string) {
+  const pattern = new RegExp(`(${REVIEW_HIGHLIGHTS.join("|")})`, "gi");
+  const parts = text.split(pattern);
+  return parts.map((p, i) =>
+    pattern.test(p)
+      ? <strong key={i} className="font-semibold text-foreground">{p}</strong>
+      : <span key={i}>{p}</span>
+  );
+}
 
 const trustPoints = [
   "Explicamos tudo antes de executar o serviço",
