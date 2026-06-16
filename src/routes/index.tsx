@@ -689,29 +689,6 @@ function Index() {
             </div>
           </div>
 
-          {/* VÍDEO INSTITUCIONAL */}
-          <div className="mt-14 md:mt-20" data-reveal>
-            <div className="text-center max-w-2xl mx-auto">
-              <span className="text-primary font-semibold uppercase text-sm tracking-wider">Tour pela oficina</span>
-              <h3 className="mt-2 font-display font-black text-2xl md:text-4xl uppercase">
-                Veja nossa <span className="text-primary">estrutura</span>
-              </h3>
-            </div>
-            <div className="mt-6 mx-auto max-w-4xl rounded-2xl overflow-hidden border border-border shadow-2xl bg-[var(--ink)]">
-              <div className="relative aspect-video">
-                <div className="absolute inset-0 grid-tech opacity-40" />
-                <div className="absolute inset-0 grid place-items-center text-center p-6">
-                  <div>
-                    <div className="mx-auto grid h-16 w-16 md:h-20 md:w-20 place-items-center rounded-full bg-primary text-white shadow-[0_0_40px_rgba(0,191,255,0.6)]">
-                      <svg viewBox="0 0 24 24" className="h-8 w-8 md:h-10 md:w-10 ml-1" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
-                    </div>
-                    <div className="mt-4 font-display font-bold uppercase text-white text-base md:text-lg">Vídeo institucional em breve</div>
-                    <div className="text-xs text-white/60 mt-1">Tour completo pela estrutura da oficina</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* DESTAQUES DA OFICINA */}
           <div className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
