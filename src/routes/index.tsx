@@ -11,6 +11,11 @@ import mackLogo from "@/assets/mack-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    links: [
+      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
+    ],
+  }),
 });
 
 const WHATS_NUMBER = "5511978896108";
