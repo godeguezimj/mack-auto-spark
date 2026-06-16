@@ -494,9 +494,6 @@ function Index() {
         <div className="absolute inset-0 grid-tech opacity-30" />
         <div className="container-x relative py-10 md:py-14">
           <div className="rounded-2xl glass p-6 md:p-10 flex flex-col md:flex-row md:items-center gap-5 md:gap-10 neon-glow">
-            <div className="flex-shrink-0 grid place-items-center h-14 w-14 rounded-xl bg-primary text-white">
-              <Sparkles className="h-7 w-7" />
-            </div>
             <div className="flex-1">
               <div className="text-primary font-semibold uppercase text-xs tracking-widest">Oferta por tempo limitado</div>
               <h2 className="mt-1 font-display font-black text-2xl md:text-4xl uppercase">
