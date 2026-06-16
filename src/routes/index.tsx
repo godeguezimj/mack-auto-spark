@@ -838,17 +838,50 @@ function Index() {
         </div>
       </footer>
 
-      {/* BOTÃO FLUTUANTE "Precisa de ajuda?" */}
+      {/* WHATSAPP FLUTUANTE — atendente + ajuda */}
       <div className="fixed z-50 bottom-24 md:bottom-6 right-4 flex flex-col items-end gap-3">
         {helpOpen && (
-          <div className="w-[260px] rounded-2xl bg-card border-2 border-primary/40 shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between bg-[var(--ink)] text-white px-4 py-3">
-              <div className="font-display font-bold uppercase text-sm">Precisa de ajuda?</div>
-              <button onClick={() => setHelpOpen(false)} aria-label="Fechar" className="text-white/80 hover:text-white">
+          <div className="w-[290px] rounded-2xl bg-card border border-border shadow-2xl overflow-hidden animate-fade-in">
+            {/* header com atendente */}
+            <div className="flex items-start gap-3 bg-[var(--ink)] text-white px-4 py-4">
+              <div className="relative shrink-0">
+                <img
+                  src={atendenteImg}
+                  alt="Atendente da Mack Auto Service"
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                  className="h-12 w-12 rounded-full object-cover border-2 border-white/20"
+                />
+                <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-[#25D366] border-2 border-[var(--ink)]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-display font-bold uppercase text-sm leading-tight">Precisando de ajuda?</div>
+                <div className="text-xs text-white/70 mt-0.5">Nossa equipe está online.</div>
+              </div>
+              <button onClick={() => setHelpOpen(false)} aria-label="Fechar" className="text-white/70 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <ul className="divide-y divide-border">
+
+            {/* CTA principal */}
+            <div className="p-3 bg-[var(--surface)] border-b border-border">
+              <a
+                href={wa("Olá! Quero FALAR COM A OFICINA da Mack Auto Service.")}
+                onClick={() => { trackWhats("float_main"); setHelpOpen(false); }}
+                className="btn-whats inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-bold uppercase text-sm"
+              >
+                <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span>
+                Falar no WhatsApp
+              </a>
+              <div className="mt-2 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground">
+                <span className="online-dot" aria-hidden />
+                <span>Online agora · resposta rápida</span>
+              </div>
+            </div>
+
+            {/* atalhos */}
+            <ul className="divide-y divide-border max-h-[260px] overflow-y-auto">
               {helpOptions.map(({ icon: Icon, label, msg }) => (
                 <li key={label}>
                   <a
@@ -868,30 +901,30 @@ function Index() {
         )}
         <button
           onClick={() => setHelpOpen((v) => !v)}
-          aria-label="Precisa de ajuda?"
-          className="btn-primary inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold uppercase shadow-2xl"
+          aria-label="Falar no WhatsApp"
+          className="btn-whats inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold uppercase shadow-2xl"
         >
-          {helpOpen ? <X className="h-5 w-5" /> : <HelpCircle className="h-5 w-5" />}
-          {helpOpen ? "Fechar" : "Precisa de ajuda?"}
+          {helpOpen ? <X className="h-5 w-5" /> : <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span>}
+          {helpOpen ? "Fechar" : "Falar no WhatsApp"}
         </button>
       </div>
 
-      {/* BARRA FIXA INFERIOR MOBILE — 4 ações */}
-      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--ink)] border-t border-primary/40 grid grid-cols-4">
+      {/* BARRA FIXA INFERIOR MOBILE — WhatsApp dominante */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--ink)] border-t border-white/10 flex items-stretch">
         <a
-          href={wa("Olá! Quero FALAR NO WHATSAPP com a Mack Auto Service.")}
+          href={wa("Olá! Quero FALAR COM A OFICINA da Mack Auto Service.")}
           onClick={() => trackWhats("mobile_bar_whats")}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition"
+          className="btn-whats flex-[3] flex items-center justify-center gap-2 py-3 text-sm font-bold uppercase tracking-wide"
         >
-          <FaWhatsapp className="h-5 w-5 text-[var(--whats,#25D366)]" />
-          WhatsApp
+          <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span>
+          Falar com a Oficina
         </a>
         <a
           href="tel:+5511978896108"
           onClick={() => trackWhats("mobile_bar_call")}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition border-l border-white/10"
+          className="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[10px] font-bold uppercase text-white hover:bg-white/5 transition"
         >
-          <Phone className="h-5 w-5 text-primary" />
+          <Phone className="h-4 w-4 text-primary" />
           Ligar
         </a>
         <a
@@ -899,18 +932,10 @@ function Index() {
           target="_blank"
           rel="noopener"
           onClick={() => trackWhats("mobile_bar_map")}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition border-l border-white/10"
+          className="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[10px] font-bold uppercase text-white hover:bg-white/5 transition"
         >
-          <MapPin className="h-5 w-5 text-primary" />
+          <MapPin className="h-4 w-4 text-primary" />
           Local
-        </a>
-        <a
-          href="#servicos"
-          onClick={() => trackWhats("mobile_bar_services")}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition border-l border-white/10"
-        >
-          <List className="h-5 w-5 text-primary" />
-          Serviços
         </a>
       </div>
     </div>
