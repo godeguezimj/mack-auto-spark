@@ -216,7 +216,7 @@ function Index() {
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-center">
             <div className="max-w-2xl">
               <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-[11px] md:text-xs font-semibold uppercase tracking-wider text-primary">
-                <ShieldCheck className="h-3.5 w-3.5" /> Transparência e garantia
+                <ShieldGuarantee className="h-3.5 w-3.5" /> Transparência e garantia
               </span>
               <h1 className="mt-3 font-display font-black text-2xl sm:text-4xl md:text-5xl leading-[1.02] uppercase text-balance">
                 Carro com <span className="text-primary text-glow">barulho</span>, <span className="text-primary text-glow">luz no painel</span> ou <span className="text-primary text-glow">falhas?</span>
