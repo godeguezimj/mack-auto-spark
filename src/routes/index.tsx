@@ -206,26 +206,27 @@ function Index() {
 
               <div className="mt-7 flex flex-col sm:flex-row gap-3">
                 <a
-                  href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()} sobre meu veículo.`)}
+                  href={wa("Olá! Quero RECEBER DIAGNÓSTICO PELO WHATSAPP do meu veículo.")}
                   onClick={() => trackWhats("hero_primary")}
-                  className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base"
+                  className="btn-primary cta-pulse-soft inline-flex items-center justify-center gap-2 rounded-xl px-7 py-4 font-bold uppercase tracking-wide text-sm md:text-base"
                 >
-                  <MessageCircle className="h-5 w-5" /> {CTA_PRIMARY}
+                  <MessageCircle className="h-5 w-5" /> 🚗 Receber Diagnóstico pelo WhatsApp
                 </a>
                 <a
                   href="#mapa"
-                  className="btn-outline-neon inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base"
+                  className="btn-outline-neon inline-flex items-center justify-center gap-2 rounded-xl px-7 py-4 font-bold uppercase tracking-wide text-sm md:text-base"
                 >
                   <MapPin className="h-5 w-5" /> Como Chegar
                 </a>
               </div>
+              <p className="mt-3 text-xs md:text-sm text-white/70">Resposta rápida durante horário comercial.</p>
 
-              <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-white/90">
+              <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-white/90">
                 {[
-                  "+220 avaliações 4,6★ no Google",
-                  "Atendimento especializado",
-                  "Transparência nos serviços",
-                  "Garantia em todos os reparos",
+                  "⭐ 4,6 no Google",
+                  "+220 avaliações reais",
+                  "Atendimento transparente",
+                  "Oficina física em São Paulo",
                 ].map((t) => (
                   <li key={t} className="flex items-center gap-2 glass rounded-md px-3 py-2">
                     <CheckCircle2 className="h-4 w-4 text-primary" /> {t}
@@ -256,9 +257,9 @@ function Index() {
               <a
                 href={wa(`Olá! Quero ${CTA_SECONDARY.toLowerCase()}.`)}
                 onClick={() => trackWhats("hero_card")}
-                className="btn-primary mt-5 w-full inline-flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-bold uppercase"
+                className="btn-primary mt-5 w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold uppercase"
               >
-                <MessageCircle className="h-4 w-4" /> {CTA_SECONDARY}
+                <MessageCircle className="h-4 w-4" /> 📲 Falar com um Especialista
               </a>
             </aside>
           </div>
@@ -283,11 +284,11 @@ function Index() {
               <p className="mt-1 text-xs text-white/60">*Consulte condições.</p>
             </div>
             <a
-              href={wa("Olá! Quero AGENDAR CHECK-UP PELO WHATSAPP.")}
+              href={wa("Olá! Quero AGENDAR CHECK-UP GRATUITO pelo WhatsApp.")}
               onClick={() => trackWhats("oferta_checkup")}
-              className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base whitespace-nowrap"
+              className="btn-primary cta-checkup inline-flex items-center justify-center gap-2 rounded-xl px-7 py-4 font-bold uppercase tracking-wide text-sm md:text-base whitespace-nowrap"
             >
-              <MessageCircle className="h-5 w-5" /> Agendar Check-up pelo WhatsApp
+              <MessageCircle className="h-5 w-5" /> 🚗 Agendar Check-up Gratuito
             </a>
           </div>
         </div>
@@ -375,11 +376,11 @@ function Index() {
 
           <div className="mt-10 text-center" data-reveal>
             <a
-              href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()} sobre meu veículo.`)}
+              href={wa("Olá! Quero RESOLVER ESSE PROBLEMA do meu veículo.")}
               onClick={() => trackWhats("dores_cta")}
-              className="btn-primary inline-flex items-center gap-2 rounded-md px-7 py-4 font-bold uppercase tracking-wide"
+              className="btn-primary inline-flex items-center gap-2 rounded-xl px-8 py-4 font-bold uppercase tracking-wide"
             >
-              <MessageCircle className="h-5 w-5" /> {CTA_PRIMARY}
+              <MessageCircle className="h-5 w-5" /> 🔧 Quero Resolver Esse Problema
             </a>
           </div>
         </div>
@@ -404,11 +405,11 @@ function Index() {
                 <h3 className="mt-4 font-display font-bold text-lg uppercase">{title}</h3>
                 <p className="mt-1.5 text-sm text-muted-foreground flex-1">{desc}</p>
                 <a
-                  href={wa(`Olá! Quero um orçamento para: ${title}`)}
+                  href={wa(`Olá! Quero RECEBER ORÇAMENTO PELO WHATSAPP para: ${title}`)}
                   onClick={() => trackWhats(`servico_${title}`)}
-                  className="btn-primary mt-5 inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-bold uppercase"
+                  className="btn-primary mt-5 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold uppercase"
                 >
-                  <MessageCircle className="h-4 w-4" /> Receber Avaliação
+                  <MessageCircle className="h-4 w-4" /> 📲 Receber Orçamento
                 </a>
               </article>
             ))}
@@ -488,11 +489,11 @@ function Index() {
           </div>
           <div className="mt-10 text-center" data-reveal>
             <a
-              href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
+              href={wa("Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service.")}
               onClick={() => trackWhats("equipe_cta")}
-              className="btn-primary inline-flex items-center gap-2 rounded-md px-7 py-4 font-bold uppercase tracking-wide"
+              className="btn-primary inline-flex items-center gap-2 rounded-xl px-8 py-4 font-bold uppercase tracking-wide"
             >
-              <MessageCircle className="h-5 w-5" /> {CTA_PRIMARY}
+              <MessageCircle className="h-5 w-5" /> 📲 Falar com um Especialista
             </a>
           </div>
         </div>
@@ -627,12 +628,18 @@ function Index() {
             Quanto antes identificar o problema, menor será o custo do reparo.
           </p>
           <a
-            href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
+            href={wa("Olá! Quero FALAR COM UM MECÂNICO AGORA.")}
             onClick={() => trackWhats("cta_final")}
-            className="btn-primary mt-8 inline-flex items-center gap-2 rounded-md px-8 py-5 text-base md:text-lg font-bold uppercase tracking-wide"
+            className="btn-primary cta-pulse-soft cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
           >
-            <MessageCircle className="h-6 w-6" /> {CTA_PRIMARY}
+            <MessageCircle className="h-6 w-6" /> 🚗 Falar com um Mecânico Agora
           </a>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs md:text-sm text-white/80">
+            <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 no Google</span>
+            <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> +220 avaliações</span>
+            <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> Atendimento transparente</span>
+            <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> Oficina física em SP</span>
+          </div>
         </div>
       </section>
 
@@ -669,22 +676,23 @@ function Index() {
       </footer>
 
       <a
-        href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
+        href={wa("Olá! Quero FALAR NO WHATSAPP com a Mack Auto Service.")}
         onClick={() => trackWhats("float_button")}
         aria-label="Falar no WhatsApp"
-        className="btn-primary pulse-ring fixed bottom-20 md:bottom-6 right-5 z-50 grid h-14 w-14 place-items-center rounded-full shadow-xl"
+        className="float-wa bottom-24 md:bottom-6 right-5"
       >
         <MessageCircle className="h-7 w-7" />
+        <span className="float-wa-tip hidden md:block">Fale agora com nossa equipe</span>
       </a>
 
       {/* CTA fixa mobile — sempre visível */}
       <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--ink)] border-t border-primary/40 p-3">
         <a
-          href={wa(`Olá! Quero ${CTA_PRIMARY.toLowerCase()}.`)}
+          href={wa("Olá! Quero FALAR NO WHATSAPP com a Mack Auto Service.")}
           onClick={() => trackWhats("mobile_sticky")}
-          className="btn-primary w-full inline-flex items-center justify-center gap-2 rounded-md py-3.5 text-sm font-bold uppercase tracking-wide"
+          className="btn-primary cta-pulse-soft w-full inline-flex items-center justify-center gap-2 rounded-xl py-4 text-sm font-bold uppercase tracking-wider"
         >
-          <MessageCircle className="h-5 w-5" /> Falar no WhatsApp
+          <MessageCircle className="h-5 w-5" /> 📲 Falar no WhatsApp
         </a>
       </div>
     </div>
