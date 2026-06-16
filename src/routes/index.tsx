@@ -245,9 +245,9 @@ function Index() {
           <a
             href={wa(`Olá! Quero ${CTA_SECONDARY.toLowerCase()}.`)}
             onClick={() => trackWhats("header")}
-            className="btn-primary hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold"
+            className="btn-whats hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold"
           >
-            <FaWhatsapp className="h-4 w-4 text-white" /> WhatsApp
+            <FaWhatsapp className="h-4 w-4" /> WhatsApp
           </a>
         </div>
       </header>
@@ -278,9 +278,9 @@ function Index() {
               <a
                 href={wa("Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service sobre o meu veículo.")}
                 onClick={() => trackWhats("hero_primary")}
-                className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm"
+                className="btn-whats inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm"
               >
-                <span className="wa-breathe"><FaWhatsapp className="h-5 w-5 text-white" /></span>
+                <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span>
                 Falar com um Especialista
               </a>
               <a
@@ -369,9 +369,9 @@ function Index() {
             <a
               href={wa("Olá! Quero RESOLVER ESSE PROBLEMA do meu veículo.")}
               onClick={() => trackWhats("dores_cta")}
-              className="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-4 font-bold uppercase tracking-wide"
+              className="btn-whats inline-flex items-center gap-2 rounded-xl px-7 py-4 font-bold uppercase tracking-wide"
             >
-              <FaWhatsapp className="h-5 w-5 text-white" /> Quero Resolver Esse Problema
+              <FaWhatsapp className="h-5 w-5" /> Quero Resolver Esse Problema
             </a>
           </div>
         </div>
@@ -396,9 +396,9 @@ function Index() {
             <a
               href={wa("Olá! Quero AGENDAR CHECK-UP GRATUITO pelo WhatsApp.")}
               onClick={() => trackWhats("oferta_checkup")}
-              className="btn-primary cta-checkup inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base whitespace-nowrap"
+              className="btn-whats inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base whitespace-nowrap"
             >
-              <FaWhatsapp className="h-5 w-5 text-white" /> Agendar Check-up
+              <FaWhatsapp className="h-5 w-5" /> Agendar Check-up
             </a>
           </div>
         </div>
@@ -786,9 +786,9 @@ function Index() {
           <a
             href={wa("Olá! Quero FALAR COM UM ESPECIALISTA agora sobre o meu veículo.")}
             onClick={() => trackWhats("cta_final")}
-            className="btn-primary cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
+            className="btn-whats cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
           >
-            <span className="wa-breathe"><FaWhatsapp className="h-6 w-6 text-white" /></span>
+            <span className="wa-breathe"><FaWhatsapp className="h-6 w-6" /></span>
             Falar com um Especialista
           </a>
           <div className="mt-4 flex items-center justify-center gap-2 text-sm text-white/80">
