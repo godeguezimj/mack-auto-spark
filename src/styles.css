@@ -35,10 +35,10 @@
 :root {
   --radius: 0.625rem;
 
-  /* Brand — refined automotive blue (BMW/Bosch territory).
+  /* Brand — bright cyan from the Mack logo.
      Used SPARINGLY: primary CTA, links, key highlights, brand accents only. */
-  --primary: oklch(0.55 0.17 250);
-  --primary-foreground: oklch(1 0 0);
+  --primary: oklch(0.75 0.17 215);
+  --primary-foreground: oklch(0.15 0 0);
   --neon: var(--primary);                    /* alias removed — no neon anymore */
 
   /* Premium graphite, not pure black */
