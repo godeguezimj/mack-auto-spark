@@ -15,6 +15,12 @@ import {
 import heroImg from "@/assets/hero-oficina.jpg";
 import atendenteImg from "@/assets/atendente.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
+import oficinaFachada from "@/assets/oficina-fachada.jpg";
+import oficinaRecepcao from "@/assets/oficina-recepcao.jpg";
+import oficinaInterna from "@/assets/oficina-interna.jpg";
+import oficinaElevadores from "@/assets/oficina-elevadores.jpg";
+import oficinaEquipamentos from "@/assets/oficina-equipamentos.jpg";
+import oficinaVeiculos from "@/assets/oficina-veiculos.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -377,7 +383,113 @@ function Index() {
         </div>
       </section>
 
+      {/* CONHEÇA NOSSA ESTRUTURA — galeria premium de fotos reais */}
+      <section id="galeria-estrutura" className="py-16 md:py-24 bg-background">
+        <div className="container-x">
+          <div className="text-center max-w-3xl mx-auto" data-reveal>
+            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Nossa estrutura</span>
+            <h2 className="mt-2 font-display font-black text-3xl md:text-5xl uppercase text-balance">
+              Conheça nossa <span className="text-primary">estrutura</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+              Oficina equipada, organizada e preparada para cuidar do seu veículo com segurança e transparência.
+            </p>
+          </div>
+
+          {/* DESKTOP: grid premium (1 grande + 4 menores) | MOBILE: carrossel */}
+          {(() => {
+            const fotos = [
+              { src: oficinaFachada, label: "Fachada da oficina" },
+              { src: oficinaRecepcao, label: "Recepção" },
+              { src: oficinaInterna, label: "Área interna" },
+              { src: oficinaElevadores, label: "Elevadores automotivos" },
+              { src: oficinaEquipamentos, label: "Equipamentos profissionais" },
+              { src: oficinaVeiculos, label: "Veículos em manutenção" },
+            ];
+            const [main, ...rest] = fotos;
+            const small = rest.slice(0, 4);
+            return (
+              <>
+                {/* DESKTOP */}
+                <div
+                  className="mt-10 md:mt-14 hidden md:grid gap-4"
+                  style={{ gridTemplateColumns: "1fr 1fr", gridTemplateRows: "repeat(2, minmax(220px, 1fr))" }}
+                  data-reveal
+                >
+                  <figure
+                    className="group relative row-span-2 overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md"
+                  >
+                    <img
+                      src={main.src}
+                      alt={main.label}
+                      loading="lazy"
+                      width={1280}
+                      height={960}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
+                      <div className="font-display font-bold uppercase text-white text-sm tracking-wide">{main.label}</div>
+                    </div>
+                  </figure>
+                  <div className="grid grid-cols-2 gap-4 row-span-2">
+                    {small.map((f) => (
+                      <figure
+                        key={f.label}
+                        className="group relative overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md"
+                      >
+                        <img
+                          src={f.src}
+                          alt={f.label}
+                          loading="lazy"
+                          width={1024}
+                          height={1024}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent p-3">
+                          <div className="font-display font-bold uppercase text-white text-xs tracking-wide">{f.label}</div>
+                        </div>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+
+                {/* MOBILE — carrossel */}
+                <div
+                  className="mt-8 md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  data-reveal
+                >
+                  {fotos.map((f) => (
+                    <figure
+                      key={f.label}
+                      className="relative shrink-0 snap-center w-[88%] aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md"
+                    >
+                      <img
+                        src={f.src}
+                        alt={f.label}
+                        loading="lazy"
+                        width={1024}
+                        height={768}
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent p-3">
+                        <div className="font-display font-bold uppercase text-white text-xs tracking-wide">{f.label}</div>
+                      </div>
+                    </figure>
+                  ))}
+                </div>
+                <div className="mt-2 md:hidden flex justify-center gap-1.5">
+                  {fotos.map((_, i) => (
+                    <span key={i} className="h-1.5 w-1.5 rounded-full bg-foreground/25" />
+                  ))}
+                </div>
+              </>
+            );
+          })()}
+        </div>
+      </section>
+
       {/* OFERTA */}
+
       <section className="relative bg-[var(--ink)] text-white overflow-hidden">
         <div className="absolute inset-0 grid-tech opacity-30" />
         <div className="container-x relative py-10 md:py-14">
@@ -640,72 +752,7 @@ function Index() {
             </p>
           </div>
 
-          {/* GALERIA — grid desktop / carrossel mobile */}
-          <div className="mt-10 md:mt-14">
-            <div
-              className="
-                flex md:grid md:grid-cols-4 md:auto-rows-[180px] gap-3 md:gap-4
-                overflow-x-auto md:overflow-visible snap-x snap-mandatory
-                -mx-4 px-4 md:mx-0 md:px-0 pb-3 md:pb-0
-                [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
-              "
-            >
-              {[
-                { label: "Fachada da oficina", span: "md:col-span-2 md:row-span-2" },
-                { label: "Recepção", span: "md:col-span-1 md:row-span-1" },
-                { label: "Elevadores automotivos", span: "md:col-span-1 md:row-span-2" },
-                { label: "Área interna", span: "md:col-span-1 md:row-span-1" },
-                { label: "Equipamentos profissionais", span: "md:col-span-2 md:row-span-1" },
-                { label: "Veículos em atendimento", span: "md:col-span-1 md:row-span-1" },
-                { label: "Ferramentas profissionais", span: "md:col-span-1 md:row-span-1" },
-                { label: "Área de manutenção", span: "md:col-span-2 md:row-span-1" },
-              ].map(({ label, span }) => (
-                <figure
-                  key={label}
-                  data-reveal
-                  className={`
-                    group relative shrink-0 snap-start
-                    w-[78%] sm:w-[55%] md:w-auto
-                    aspect-[4/3] md:aspect-auto
-                    overflow-hidden rounded-2xl border border-border bg-[var(--ink)]
-                    transition-transform duration-500 hover:-translate-y-1
-                    ${span}
-                  `}
-                >
-                  <div className="absolute inset-0 grid-tech opacity-30 transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-4">
-                    <div className="font-display font-bold uppercase text-white text-sm md:text-base tracking-wide">{label}</div>
-                    <div className="text-[11px] text-white/60 mt-0.5">Foto real em breve</div>
-                  </div>
-                </figure>
-              ))}
-            </div>
-          </div>
 
-          {/* VÍDEO INSTITUCIONAL */}
-          <div className="mt-14 md:mt-20" data-reveal>
-            <div className="text-center max-w-2xl mx-auto">
-              <span className="text-primary font-semibold uppercase text-sm tracking-wider">Tour pela oficina</span>
-              <h3 className="mt-2 font-display font-black text-2xl md:text-4xl uppercase">
-                Veja nossa <span className="text-primary">estrutura</span>
-              </h3>
-            </div>
-            <div className="mt-6 mx-auto max-w-4xl rounded-2xl overflow-hidden border border-border shadow-2xl bg-[var(--ink)]">
-              <div className="relative aspect-video">
-                <div className="absolute inset-0 grid-tech opacity-40" />
-                <div className="absolute inset-0 grid place-items-center text-center p-6">
-                  <div>
-                    <div className="mx-auto grid h-16 w-16 md:h-20 md:w-20 place-items-center rounded-full bg-primary text-white shadow-[0_0_40px_rgba(0,191,255,0.6)]">
-                      <svg viewBox="0 0 24 24" className="h-8 w-8 md:h-10 md:w-10 ml-1" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
-                    </div>
-                    <div className="mt-4 font-display font-bold uppercase text-white text-base md:text-lg">Vídeo institucional em breve</div>
-                    <div className="text-xs text-white/60 mt-1">Tour completo pela estrutura da oficina</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* DESTAQUES DA OFICINA */}
           <div className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
