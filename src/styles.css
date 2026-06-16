@@ -123,19 +123,132 @@
   }
   .btn-whats:hover { background-color: var(--whats-dark); transform: translateY(-1px); }
   .btn-primary {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    min-height: 56px;
     background-color: var(--primary);
     color: var(--primary-foreground);
-    box-shadow: 0 8px 30px -10px color-mix(in oklab, var(--primary) 60%, transparent);
-    transition: all .2s ease;
+    box-shadow:
+      0 10px 30px -8px color-mix(in oklab, var(--primary) 55%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--neon) 35%, transparent) inset;
+    transition: transform 250ms cubic-bezier(.2,.7,.2,1),
+                box-shadow 250ms ease,
+                background-color 250ms ease,
+                filter 250ms ease;
+    will-change: transform;
   }
-  .btn-primary:hover { background-color: var(--neon); transform: translateY(-1px); box-shadow: 0 12px 36px -10px color-mix(in oklab, var(--neon) 70%, transparent); }
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    pointer-events: none;
+    animation: ctaSweep 6s ease-in-out infinite;
+  }
+  @media (hover:hover) {
+    .btn-primary:hover {
+      background-color: var(--neon);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow:
+        0 18px 44px -10px color-mix(in oklab, var(--neon) 80%, transparent),
+        0 0 0 1px color-mix(in oklab, var(--neon) 60%, transparent) inset;
+      filter: brightness(1.05);
+    }
+  }
+  .btn-primary:active { transform: scale(.97); transition-duration: 100ms; }
+
   .btn-outline-neon {
+    position: relative;
+    overflow: hidden;
+    min-height: 56px;
     background: transparent;
     color: var(--primary);
     border: 2px solid var(--primary);
-    transition: all .2s ease;
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 40%, transparent);
+    transition: transform 250ms cubic-bezier(.2,.7,.2,1), box-shadow 250ms ease, background-color 250ms ease, color 250ms ease;
   }
-  .btn-outline-neon:hover { background: var(--primary); color: white; }
+  @media (hover:hover) {
+    .btn-outline-neon:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 14px 36px -10px color-mix(in oklab, var(--primary) 70%, transparent);
+    }
+  }
+  .btn-outline-neon:active { transform: scale(.97); transition-duration: 100ms; }
+
+  /* Soft attention pulse (every 4s) */
+  .cta-pulse-soft { animation: ctaPulseSoft 4s ease-in-out infinite; }
+
+  /* Mega CTA for final section */
+  .cta-mega {
+    min-height: 72px;
+    font-size: 1.0625rem;
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--neon) 60%, transparent) inset,
+      0 18px 60px -12px color-mix(in oklab, var(--neon) 90%, transparent),
+      0 0 80px -10px color-mix(in oklab, var(--primary) 70%, transparent);
+  }
+  .cta-mega::after { animation-duration: 4s; }
+
+  /* Check-up CTA with extra neon border */
+  .cta-checkup {
+    box-shadow:
+      0 0 0 2px color-mix(in oklab, var(--neon) 80%, transparent),
+      0 0 0 6px color-mix(in oklab, var(--primary) 22%, transparent),
+      0 16px 44px -12px color-mix(in oklab, var(--neon) 75%, transparent);
+  }
+
+  /* Floating WhatsApp button — green with soft halo + tooltip */
+  .float-wa {
+    position: fixed;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    height: 64px;
+    width: 64px;
+    border-radius: 9999px;
+    background: var(--whats);
+    color: white;
+    box-shadow:
+      0 0 0 0 color-mix(in oklab, var(--whats) 65%, transparent),
+      0 18px 40px -10px color-mix(in oklab, var(--whats) 80%, transparent);
+    animation: waPulse 4s ease-in-out infinite;
+    transition: transform 250ms cubic-bezier(.2,.7,.2,1), background-color 250ms ease;
+  }
+  @media (hover:hover) {
+    .float-wa:hover { background: var(--whats-dark); transform: scale(1.06); }
+    .float-wa:hover .float-wa-tip { opacity: 1; transform: translateX(0); }
+  }
+  .float-wa:active { transform: scale(.95); }
+  .float-wa-tip {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    background: var(--ink);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    box-shadow: 0 8px 22px -8px rgba(0,0,0,.5);
+  }
+  .float-wa-tip::after {
+    content: "";
+    position: absolute;
+    right: -5px; top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 10px; height: 10px;
+    background: var(--ink);
+  }
   .glass {
     background: color-mix(in oklab, white 8%, transparent);
     backdrop-filter: blur(14px) saturate(140%);
@@ -174,3 +287,37 @@
   100% { transform: translateY(100%); opacity: 0; }
 }
 .scanline { animation: scanline 6s linear infinite; }
+
+/* CTA sweep — light bar travels across button every 6s, ~1s duration */
+@keyframes ctaSweep {
+  0%   { transform: translateX(-120%); }
+  16%  { transform: translateX(120%); }   /* ~1s of a 6s loop */
+  100% { transform: translateX(120%); }
+}
+
+/* Soft glow pulse every 4s — periphery only, not aggressive */
+@keyframes ctaPulseSoft {
+  0%, 100% {
+    box-shadow:
+      0 10px 30px -8px color-mix(in oklab, var(--primary) 55%, transparent),
+      0 0 0 0 color-mix(in oklab, var(--neon) 0%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 14px 40px -8px color-mix(in oklab, var(--neon) 80%, transparent),
+      0 0 28px 6px color-mix(in oklab, var(--neon) 35%, transparent);
+  }
+}
+
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--whats) 55%, transparent), 0 18px 40px -10px color-mix(in oklab, var(--whats) 70%, transparent); }
+  50%      { box-shadow: 0 0 0 14px color-mix(in oklab, var(--whats) 0%, transparent), 0 22px 50px -10px color-mix(in oklab, var(--whats) 85%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary::after,
+  .cta-pulse-soft,
+  .float-wa,
+  .pulse-ring,
+  .scanline { animation: none !important; }
+}
