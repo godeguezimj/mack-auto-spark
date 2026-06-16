@@ -53,11 +53,15 @@ const pains = [
   { icon: BrakeDisc, title: "Falta de segurança", desc: "Freios, suspensão e direção em dia." },
 ];
 
-const diffs = [
-  "Atendimento transparente", "Diagnóstico profissional",
-  "Equipe qualificada", "Peças de qualidade",
-  "Serviço com garantia", "Orçamento sem compromisso",
-  "Comunicação clara", "Agilidade na entrega",
+const diffs: { icon: any; label: string }[] = [
+  { icon: ShieldGuarantee, label: "Atendimento transparente" },
+  { icon: DiagnosticScanner, label: "Diagnóstico profissional" },
+  { icon: Mechanic, label: "Equipe qualificada" },
+  { icon: CertifiedPart, label: "Peças de qualidade" },
+  { icon: ShieldGuarantee, label: "Serviço com garantia" },
+  { icon: QuoteDocument, label: "Orçamento sem compromisso" },
+  { icon: SpeechBubble, label: "Comunicação clara" },
+  { icon: Stopwatch, label: "Agilidade na entrega" },
 ];
 
 const reviews = [
