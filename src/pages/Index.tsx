@@ -859,7 +859,7 @@ export default function Index() {
       </footer>
 
       {/* WHATSAPP FLUTUANTE — atendente + ajuda (apenas desktop) */}
-      <div className="hidden md:flex fixed z-50 bottom-6 right-4 flex-col items-end gap-3">
+      <div className="hidden fixed z-50 bottom-6 right-4 flex-col items-end gap-3">
         {helpOpen && (
           <div className="w-[290px] rounded-2xl bg-card border border-border shadow-2xl overflow-hidden animate-fade-in">
             {/* header com atendente */}
