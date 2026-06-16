@@ -28,8 +28,8 @@
   --color-ink: var(--ink);
   --color-surface: var(--surface);
   --color-neon: var(--neon);
-  --font-display: "Barlow Condensed", "Inter", sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Saira", "Aktiv Grotesk Extended", "Helvetica Neue", system-ui, sans-serif;
+  --font-sans: "Saira", "Aktiv Grotesk Extended", "Helvetica Neue", system-ui, sans-serif;
 }
 
 :root {
@@ -75,10 +75,38 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    font-stretch: 125%;
+    text-wrap: balance;
+  }
+  h1 {
+    font-weight: 800;
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem); /* 36 → 72 */
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3.6vw, 3.25rem); /* 28 → 52 */
+    line-height: 1;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: clamp(1.5rem, 2vw, 1.875rem); /* 24 → 30 */
+    line-height: 1.15;
     letter-spacing: -0.01em;
   }
+  h4 { font-weight: 600; font-size: 1.25rem; line-height: 1.2; }
+  p { line-height: 1.6; }
+  .lead { font-size: clamp(1.125rem, 1.4vw, 1.25rem); font-weight: 400; line-height: 1.6; color: var(--muted-foreground); }
+  .caption { font-size: clamp(0.9375rem, 1vw, 1.0625rem); font-weight: 300; line-height: 1.5; color: var(--muted-foreground); }
+  .eyebrow { font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.8125rem; }
+  .stat { font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  button, .btn, a.btn-primary, a.btn-outline-neon, a.btn-whats { letter-spacing: 0.06em; }
   input:focus, textarea:focus, select:focus {
     outline: none;
     box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 35%, transparent);
