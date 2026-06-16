@@ -283,7 +283,7 @@ function Index() {
               { icon: Mechanic, label: "Equipe especializada" },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center justify-center gap-2 text-xs md:text-sm font-semibold uppercase tracking-wide">
-                <Icon className="h-4 w-4 md:h-5 md:w-5 text-primary shrink-0" />
+                <Icon className="auto-icon h-5 w-5 md:h-6 md:w-6 text-primary shrink-0" />
                 <span>{label}</span>
               </div>
             ))}
@@ -311,7 +311,7 @@ function Index() {
                 className="group rounded-xl border border-border bg-card p-4 md:p-6 hover:border-primary hover:shadow-lg transition"
               >
                 <div className="grid h-10 w-10 md:h-12 md:w-12 place-items-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition">
-                  <Icon className="h-5 w-5 md:h-6 md:w-6" />
+                  <Icon className="auto-icon h-6 w-6 md:h-7 md:w-7" />
                 </div>
                 <h3 className="mt-3 font-display font-bold text-sm md:text-xl uppercase">{title}</h3>
                 <p className="mt-1 text-xs md:text-sm text-muted-foreground hidden md:block">{desc}</p>
@@ -372,7 +372,7 @@ function Index() {
             {services.map(({ icon: Icon, title, desc }) => (
               <article key={title} data-reveal className="flex flex-col rounded-xl bg-card border border-border p-5 hover:shadow-xl hover:-translate-y-1 transition">
                 <div className="grid h-12 w-12 place-items-center rounded-lg bg-[var(--ink)] text-primary">
-                  <Icon className="h-6 w-6" />
+                  <Icon className="auto-icon h-7 w-7" />
                 </div>
                 <h3 className="mt-3 font-display font-bold text-base md:text-lg uppercase">{title}</h3>
                 <p className="mt-1 text-xs md:text-sm text-muted-foreground flex-1">{desc}</p>
