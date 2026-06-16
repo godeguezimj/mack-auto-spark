@@ -224,6 +224,18 @@
   .float-wa { transition: none; }
 }
 
+/* WhatsApp icon micro-interaction — subtle forward shift on hover */
+.btn-primary svg,
+.cta-checkup svg {
+  transition: transform .2s ease;
+}
+@media (hover: hover) {
+  .btn-primary:hover svg,
+  .cta-checkup:hover svg {
+    transform: translateX(2px);
+  }
+}
+
 /* Auto icons — minimalist, no glow */
 .auto-icon {
   transition: transform .2s ease, color .2s ease;
