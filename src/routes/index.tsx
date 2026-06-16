@@ -38,19 +38,19 @@ const trackWhats = (label: string) => {
 
 // Top services only — mais procurados
 const services = [
-  { icon: Wrench, title: "Revisão Preventiva", desc: "Checklist completo para manter seu carro seguro." },
-  { icon: Sparkles, title: "Troca de Óleo", desc: "Óleos e filtros de alta qualidade." },
-  { icon: Disc, title: "Freios", desc: "Pastilhas, discos e fluido para sua segurança." },
-  { icon: Car, title: "Suspensão", desc: "Amortecedores, molas, bandejas e buchas." },
-  { icon: Zap, title: "Injeção Eletrônica", desc: "Limpeza, regulagem e reparo." },
-  { icon: Gauge, title: "Diagnóstico", desc: "Scanner profissional para identificar falhas." },
+  { icon: ServiceClipboard, title: "Revisão Preventiva", desc: "Checklist completo para manter seu carro seguro." },
+  { icon: OilCan, title: "Troca de Óleo", desc: "Óleos e filtros de alta qualidade." },
+  { icon: BrakeDisc, title: "Freios", desc: "Pastilhas, discos e fluido para sua segurança." },
+  { icon: ShockAbsorber, title: "Suspensão", desc: "Amortecedores, molas, bandejas e buchas." },
+  { icon: DiagnosticScanner, title: "Injeção Eletrônica", desc: "Limpeza, regulagem e reparo." },
+  { icon: EngineBlock, title: "Diagnóstico", desc: "Scanner profissional para identificar falhas." },
 ];
 
 const pains = [
-  { icon: Volume2, title: "Barulhos estranhos", desc: "Pequenos ruídos podem virar grandes prejuízos." },
-  { icon: Fuel, title: "Consumo excessivo", desc: "Seu carro pode estar gastando mais do que deveria." },
-  { icon: LampDesk, title: "Luzes no painel", desc: "Não espere o problema piorar para agir." },
-  { icon: AlertTriangle, title: "Falta de segurança", desc: "Freios, suspensão e direção em dia." },
+  { icon: ShockAbsorber, title: "Barulhos estranhos", desc: "Pequenos ruídos podem virar grandes prejuízos." },
+  { icon: FuelPump, title: "Consumo excessivo", desc: "Seu carro pode estar gastando mais do que deveria." },
+  { icon: DashboardAlert, title: "Luzes no painel", desc: "Não espere o problema piorar para agir." },
+  { icon: BrakeDisc, title: "Falta de segurança", desc: "Freios, suspensão e direção em dia." },
 ];
 
 const diffs = [
