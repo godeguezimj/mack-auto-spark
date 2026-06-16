@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Phone, MapPin, Star, Sparkles,
   AlertTriangle, ChevronDown, Clock,
-  HelpCircle, X, List,
+  X,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import {
@@ -13,6 +13,7 @@ import {
   SpeechBubble, QuoteDocument,
 } from "@/components/auto-icons";
 import heroImg from "@/assets/hero-oficina.jpg";
+import atendenteImg from "@/assets/atendente.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -273,13 +274,14 @@ function Index() {
               Diagnóstico especializado antes que o prejuízo aumente.
             </p>
 
-            <div className="mt-9 flex flex-col sm:flex-row gap-3">
+            <div className="mt-9 flex flex-col sm:flex-row gap-3 wa-rise">
               <a
-                href={wa("Olá! Quero RECEBER DIAGNÓSTICO PELO WHATSAPP do meu veículo.")}
+                href={wa("Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service sobre o meu veículo.")}
                 onClick={() => trackWhats("hero_primary")}
                 className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm"
               >
-                <FaWhatsapp className="h-5 w-5 text-white" /> Receber Diagnóstico
+                <span className="wa-breathe"><FaWhatsapp className="h-5 w-5 text-white" /></span>
+                Falar com um Especialista
               </a>
               <a
                 href="#mapa"
@@ -289,13 +291,28 @@ function Index() {
               </a>
             </div>
 
-            <div className="mt-10 flex items-center gap-3 text-sm text-white/75">
-              <div className="flex">
-                {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+            {/* Online status — atendimento humano */}
+            <div className="mt-4 flex items-center gap-2 text-sm text-white/85 wa-rise">
+              <span className="online-dot" aria-hidden />
+              <span className="font-semibold text-white">Online agora</span>
+              <span className="text-white/40">·</span>
+              <span className="text-white/70">Resposta rápida em horário comercial</span>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/75">
+              <div className="flex items-center gap-1.5">
+                <div className="flex">
+                  {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+                </div>
+                <span className="font-semibold text-white">4,6</span>
+                <span className="text-white/50">no Google</span>
               </div>
-              <span className="font-semibold text-white">4,6</span>
-              <span className="text-white/50">·</span>
-              <span>+220 avaliações no Google</span>
+              <span className="text-white/30">·</span>
+              <span>+220 avaliações</span>
+              <span className="text-white/30">·</span>
+              <span className="inline-flex items-center gap-1.5">
+                <FaWhatsapp className="h-4 w-4 text-[#25D366]" /> Atendimento via WhatsApp
+              </span>
             </div>
           </div>
         </div>
@@ -767,12 +784,19 @@ function Index() {
             Pequenos defeitos viram grandes prejuízos. Quanto antes identificar, menor o custo do reparo.
           </p>
           <a
-            href={wa("Olá! Quero FALAR COM UM MECÂNICO AGORA.")}
+            href={wa("Olá! Quero FALAR COM UM ESPECIALISTA agora sobre o meu veículo.")}
             onClick={() => trackWhats("cta_final")}
-            className="btn-primary cta-pulse-soft cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
+            className="btn-primary cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
           >
-            <FaWhatsapp className="h-6 w-6 text-white" /> Falar com um Mecânico Agora
+            <span className="wa-breathe"><FaWhatsapp className="h-6 w-6 text-white" /></span>
+            Falar com um Especialista
           </a>
+          <div className="mt-4 flex items-center justify-center gap-2 text-sm text-white/80">
+            <span className="online-dot" aria-hidden />
+            <span className="font-semibold text-white">Online agora</span>
+            <span className="text-white/40">·</span>
+            <span>Equipe disponível no WhatsApp</span>
+          </div>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs md:text-sm text-white/80">
             <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 no Google</span>
             <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> +220 avaliações</span>
@@ -814,17 +838,50 @@ function Index() {
         </div>
       </footer>
 
-      {/* BOTÃO FLUTUANTE "Precisa de ajuda?" */}
+      {/* WHATSAPP FLUTUANTE — atendente + ajuda */}
       <div className="fixed z-50 bottom-24 md:bottom-6 right-4 flex flex-col items-end gap-3">
         {helpOpen && (
-          <div className="w-[260px] rounded-2xl bg-card border-2 border-primary/40 shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between bg-[var(--ink)] text-white px-4 py-3">
-              <div className="font-display font-bold uppercase text-sm">Precisa de ajuda?</div>
-              <button onClick={() => setHelpOpen(false)} aria-label="Fechar" className="text-white/80 hover:text-white">
+          <div className="w-[290px] rounded-2xl bg-card border border-border shadow-2xl overflow-hidden animate-fade-in">
+            {/* header com atendente */}
+            <div className="flex items-start gap-3 bg-[var(--ink)] text-white px-4 py-4">
+              <div className="relative shrink-0">
+                <img
+                  src={atendenteImg}
+                  alt="Atendente da Mack Auto Service"
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                  className="h-12 w-12 rounded-full object-cover border-2 border-white/20"
+                />
+                <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-[#25D366] border-2 border-[var(--ink)]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-display font-bold uppercase text-sm leading-tight">Precisando de ajuda?</div>
+                <div className="text-xs text-white/70 mt-0.5">Nossa equipe está online.</div>
+              </div>
+              <button onClick={() => setHelpOpen(false)} aria-label="Fechar" className="text-white/70 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <ul className="divide-y divide-border">
+
+            {/* CTA principal */}
+            <div className="p-3 bg-[var(--surface)] border-b border-border">
+              <a
+                href={wa("Olá! Quero FALAR COM A OFICINA da Mack Auto Service.")}
+                onClick={() => { trackWhats("float_main"); setHelpOpen(false); }}
+                className="btn-whats inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-bold uppercase text-sm"
+              >
+                <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span>
+                Falar no WhatsApp
+              </a>
+              <div className="mt-2 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground">
+                <span className="online-dot" aria-hidden />
+                <span>Online agora · resposta rápida</span>
+              </div>
+            </div>
+
+            {/* atalhos */}
+            <ul className="divide-y divide-border max-h-[260px] overflow-y-auto">
               {helpOptions.map(({ icon: Icon, label, msg }) => (
                 <li key={label}>
                   <a
@@ -844,30 +901,30 @@ function Index() {
         )}
         <button
           onClick={() => setHelpOpen((v) => !v)}
-          aria-label="Precisa de ajuda?"
-          className="btn-primary inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold uppercase shadow-2xl"
+          aria-label="Falar no WhatsApp"
+          className="btn-whats inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold uppercase shadow-2xl"
         >
-          {helpOpen ? <X className="h-5 w-5" /> : <HelpCircle className="h-5 w-5" />}
-          {helpOpen ? "Fechar" : "Precisa de ajuda?"}
+          {helpOpen ? <X className="h-5 w-5" /> : <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span>}
+          {helpOpen ? "Fechar" : "Falar no WhatsApp"}
         </button>
       </div>
 
-      {/* BARRA FIXA INFERIOR MOBILE — 4 ações */}
-      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--ink)] border-t border-primary/40 grid grid-cols-4">
+      {/* BARRA FIXA INFERIOR MOBILE — WhatsApp dominante */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--ink)] border-t border-white/10 flex items-stretch">
         <a
-          href={wa("Olá! Quero FALAR NO WHATSAPP com a Mack Auto Service.")}
+          href={wa("Olá! Quero FALAR COM A OFICINA da Mack Auto Service.")}
           onClick={() => trackWhats("mobile_bar_whats")}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition"
+          className="btn-whats flex-[3] flex items-center justify-center gap-2 py-3 text-sm font-bold uppercase tracking-wide"
         >
-          <FaWhatsapp className="h-5 w-5 text-[var(--whats,#25D366)]" />
-          WhatsApp
+          <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span>
+          Falar com a Oficina
         </a>
         <a
           href="tel:+5511978896108"
           onClick={() => trackWhats("mobile_bar_call")}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition border-l border-white/10"
+          className="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[10px] font-bold uppercase text-white hover:bg-white/5 transition"
         >
-          <Phone className="h-5 w-5 text-primary" />
+          <Phone className="h-4 w-4 text-primary" />
           Ligar
         </a>
         <a
@@ -875,18 +932,10 @@ function Index() {
           target="_blank"
           rel="noopener"
           onClick={() => trackWhats("mobile_bar_map")}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition border-l border-white/10"
+          className="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[10px] font-bold uppercase text-white hover:bg-white/5 transition"
         >
-          <MapPin className="h-5 w-5 text-primary" />
+          <MapPin className="h-4 w-4 text-primary" />
           Local
-        </a>
-        <a
-          href="#servicos"
-          onClick={() => trackWhats("mobile_bar_services")}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition border-l border-white/10"
-        >
-          <List className="h-5 w-5 text-primary" />
-          Serviços
         </a>
       </div>
     </div>
