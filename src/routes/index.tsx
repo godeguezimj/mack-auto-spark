@@ -422,19 +422,19 @@ function Index() {
         </div>
       </section>
 
-      <section id="diferenciais" className="py-16 md:py-20 bg-[var(--ink)] text-white">
+      <section id="diferenciais" className="py-20 md:py-28 bg-white">
         <div className="container-x">
           <div className="text-center max-w-3xl mx-auto" data-reveal>
-            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Diferenciais</span>
-            <h2 className="mt-2 font-display font-black text-3xl md:text-5xl uppercase">
+            <span className="eyebrow">Diferenciais</span>
+            <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl uppercase">
               Por que escolher a <span className="text-primary">Mack Auto Service?</span>
             </h2>
           </div>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border rounded-lg overflow-hidden">
             {diffs.map(({ icon: Icon, label }) => (
-              <div key={label} data-reveal className="group auto-icon-tile rounded-lg bg-white/5 border border-white/10 p-5 hover:bg-primary/10 hover:border-primary transition">
-                <Icon className="auto-icon h-8 w-8 text-primary" />
-                <div className="mt-3 font-display font-bold uppercase text-sm md:text-base">{label}</div>
+              <div key={label} data-reveal className="group bg-white p-6 md:p-8 hover:bg-[var(--surface)] transition">
+                <Icon className="auto-icon h-7 w-7 text-foreground/70 group-hover:text-primary transition" />
+                <div className="mt-5 font-display font-semibold uppercase text-sm md:text-[15px] tracking-tight leading-snug">{label}</div>
               </div>
             ))}
           </div>
