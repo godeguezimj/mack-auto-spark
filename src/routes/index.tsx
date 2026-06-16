@@ -455,10 +455,10 @@ function Index() {
             </h2>
           </div>
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {diffs.map((d) => (
-              <div key={d} data-reveal className="rounded-lg bg-white/5 border border-white/10 p-5 hover:bg-primary/10 hover:border-primary transition">
-                <ShieldGuarantee className="h-7 w-7 text-primary" />
-                <div className="mt-3 font-display font-bold uppercase text-sm md:text-base">{d}</div>
+            {diffs.map(({ icon: Icon, label }) => (
+              <div key={label} data-reveal className="group auto-icon-tile rounded-lg bg-white/5 border border-white/10 p-5 hover:bg-primary/10 hover:border-primary transition">
+                <Icon className="auto-icon h-8 w-8 text-primary" />
+                <div className="mt-3 font-display font-bold uppercase text-sm md:text-base">{label}</div>
               </div>
             ))}
           </div>
