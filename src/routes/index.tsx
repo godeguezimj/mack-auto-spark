@@ -198,7 +198,7 @@ function Index() {
         </div>
       </header>
 
-      {/* HERO — reduzido ~30% */}
+      {/* HERO — simplificado, premium e respirável */}
       <section id="top" className="relative isolate overflow-hidden bg-[var(--ink)]">
         <img
           src={heroImg}
@@ -206,88 +206,64 @@ function Index() {
           width={1920}
           height={1080}
           fetchPriority="high"
-          className="absolute inset-0 h-full w-full object-cover opacity-40 -z-10"
+          className="absolute inset-0 h-full w-full object-cover opacity-25 -z-10"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/90 to-[var(--ink)]/60" />
-        <div className="absolute inset-0 -z-10 grid-tech opacity-60" />
-        <div className="absolute -top-32 -right-32 -z-10 h-96 w-96 rounded-full bg-primary/30 blur-3xl" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--ink)]/95 via-[var(--ink)]/85 to-[var(--ink)]/70" />
 
-        <div className="container-x py-8 md:py-16 text-white">
-          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-center">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-[11px] md:text-xs font-semibold uppercase tracking-wider text-primary">
-                <ShieldGuarantee className="h-3.5 w-3.5" /> Transparência e garantia
-              </span>
-              <h1 className="mt-3 font-display font-black text-2xl sm:text-4xl md:text-5xl leading-[1.02] uppercase text-balance">
-                Carro com <span className="text-primary text-glow">barulho</span>, <span className="text-primary text-glow">luz no painel</span> ou <span className="text-primary text-glow">falhas?</span>
-              </h1>
-              <p className="mt-3 text-base md:text-lg text-white/90">
-                Diagnóstico especializado antes que o prejuízo aumente.
-              </p>
+        <div className="container-x py-16 md:py-28 text-white">
+          <div className="max-w-3xl">
+            <span className="eyebrow text-white/60">Centro Automotivo · São Paulo</span>
+            <h1 className="mt-4 font-display font-bold text-3xl sm:text-5xl md:text-6xl leading-[1.02] uppercase text-balance">
+              Carro com barulho, luz no painel ou <span className="text-primary">falhas?</span>
+            </h1>
+            <p className="mt-5 text-base md:text-lg text-white/80 max-w-xl leading-relaxed">
+              Diagnóstico especializado antes que o prejuízo aumente.
+            </p>
 
-              <div className="mt-5 flex flex-col sm:flex-row gap-3">
-                <a
-                  href={wa("Olá! Quero RECEBER DIAGNÓSTICO PELO WHATSAPP do meu veículo.")}
-                  onClick={() => trackWhats("hero_primary")}
-                  className="btn-primary cta-pulse-soft inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base"
-                >
-                  <MessageCircle className="h-5 w-5" /> Receber Diagnóstico
-                </a>
-                <a
-                  href="#mapa"
-                  className="btn-outline-neon inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base"
-                >
-                  <MapPin className="h-5 w-5" /> Como Chegar
-                </a>
-              </div>
-
-              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs md:text-sm text-white/85">
-                <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 Google</span>
-                <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> +220 avaliações</span>
-                <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> Oficina física em SP</span>
-              </div>
+            <div className="mt-9 flex flex-col sm:flex-row gap-3">
+              <a
+                href={wa("Olá! Quero RECEBER DIAGNÓSTICO PELO WHATSAPP do meu veículo.")}
+                onClick={() => trackWhats("hero_primary")}
+                className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm"
+              >
+                <MessageCircle className="h-5 w-5" /> Receber Diagnóstico
+              </a>
+              <a
+                href="#mapa"
+                className="inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm text-white/90 hover:text-white transition border border-white/20 hover:border-white/40"
+              >
+                <MapPin className="h-5 w-5" /> Como Chegar
+              </a>
             </div>
 
-            {/* Hero card de prova social — apenas desktop p/ reduzir altura mobile */}
-            <aside className="hidden lg:block glass rounded-2xl p-6 neon-glow">
-              <div className="flex items-center gap-3">
-                <div className="flex">
-                  {[1,2,3,4,5].map(i => <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />)}
-                </div>
-                <div className="font-display font-black text-3xl text-white">4,6</div>
-                <div className="text-xs text-white/70 leading-tight">no<br/>Google</div>
+            <div className="mt-10 flex items-center gap-3 text-sm text-white/75">
+              <div className="flex">
+                {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
               </div>
-              <div className="mt-3 font-display font-bold uppercase text-xl text-white">+220 Avaliações Reais</div>
-              <p className="mt-2 text-sm text-white/80">Atendimento honesto, técnico e transparente.</p>
-              <a
-                href={wa(`Olá! Quero ${CTA_SECONDARY.toLowerCase()}.`)}
-                onClick={() => trackWhats("hero_card")}
-                className="btn-primary mt-5 w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold uppercase"
-              >
-                <MessageCircle className="h-4 w-4" /> Falar com Especialista
-              </a>
-            </aside>
+              <span className="font-semibold text-white">4,6</span>
+              <span className="text-white/50">·</span>
+              <span>+220 avaliações no Google</span>
+            </div>
           </div>
         </div>
-        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-primary to-transparent" />
       </section>
 
-      {/* BARRA DE CONFIANÇA HORIZONTAL */}
-      <section className="bg-[var(--surface)] border-b border-border">
-        <div className="container-x py-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+      {/* BARRA DE CONFIANÇA — linha simples e minimalista */}
+      <section className="bg-white border-b border-border">
+        <div className="container-x py-5">
+          <ul className="flex flex-wrap items-center justify-center md:justify-between gap-x-8 gap-y-3 text-[13px] md:text-sm text-muted-foreground">
             {[
               { icon: ShieldGuarantee, label: "Garantia nos serviços" },
-              { icon: Star, label: "+220 avaliações" },
-              { icon: MapPin, label: "Oficina física" },
-              { icon: Mechanic, label: "Equipe especializada" },
+              { icon: Star, label: "220+ avaliações" },
+              { icon: MapPin, label: "Oficina física em São Paulo" },
+              { icon: Mechanic, label: "Atendimento especializado" },
             ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center justify-center gap-2 text-xs md:text-sm font-semibold uppercase tracking-wide">
-                <Icon className="auto-icon h-5 w-5 md:h-6 md:w-6 text-primary shrink-0" />
-                <span>{label}</span>
-              </div>
+              <li key={label} className="flex items-center gap-2 whitespace-nowrap">
+                <Icon className="h-4 w-4 text-foreground/70 shrink-0" />
+                <span className="font-medium text-foreground/80">{label}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
