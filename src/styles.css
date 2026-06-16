@@ -224,18 +224,14 @@
   .float-wa { transition: none; }
 }
 
-/* WhatsApp icon micro-interaction — subtle tilt + scale on hover */
-.btn-primary svg,
-.cta-checkup svg,
+/* WhatsApp icon micro-interaction — subtle forward nudge on hover */
 .btn-whats svg {
   transition: transform .25s ease;
   transform-origin: center;
 }
 @media (hover: hover) {
-  .btn-primary:hover svg,
-  .cta-checkup:hover svg,
   .btn-whats:hover svg {
-    transform: rotate(3deg) scale(1.05);
+    transform: translateX(2px);
   }
 }
 
@@ -291,16 +287,17 @@
 .wa-rise { animation: wa-rise .55s ease-out both; animation-delay: .15s; }
 @media (prefers-reduced-motion: reduce) { .wa-rise { animation: none; opacity: 1; transform: none; } }
 
-/* WhatsApp green button (floating card + mobile bar) */
+/* WhatsApp green button — clean, premium, no glow */
 .btn-whats {
   background-color: #25D366 !important;
   color: #fff !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .06), 0 6px 16px -8px rgba(37, 211, 102, .25);
   transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 @media (hover: hover) {
   .btn-whats:hover {
     background-color: #1ebe5d !important;
     transform: translateY(-1px);
-    box-shadow: 0 8px 22px -10px rgba(37, 211, 102, .55);
+    box-shadow: 0 2px 4px rgba(15, 23, 42, .08), 0 10px 24px -10px rgba(37, 211, 102, .35);
   }
 }
