@@ -99,7 +99,7 @@ const helpOptions = [
   { icon: DashboardAlert, label: "Luz acesa no painel", msg: "Olá! Tem uma LUZ ACESA no painel do meu carro. Pode me ajudar?" },
   { icon: BrakeDisc, label: "Problema nos freios", msg: "Olá! Estou com PROBLEMA NOS FREIOS. Pode me ajudar?" },
   { icon: EngineBlock, label: "Motor falhando", msg: "Olá! Meu MOTOR está FALHANDO. Pode me ajudar?" },
-  { icon: MessageCircle, label: "Falar com especialista", msg: "Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service." },
+  { icon: FaWhatsapp, label: "Falar com especialista", msg: "Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service." },
 ];
 
 const CTA_SECONDARY = "RECEBER AVALIAÇÃO PELO WHATSAPP";
