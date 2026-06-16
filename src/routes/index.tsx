@@ -117,10 +117,10 @@ const REVIEW_HIGHLIGHTS = [
 ];
 
 function highlightReview(text: string) {
-  const pattern = new RegExp(`(${REVIEW_HIGHLIGHTS.join("|")})`, "gi");
-  const parts = text.split(pattern);
-  return parts.map((p, i) =>
-    pattern.test(p)
+  const re = new RegExp(`(${REVIEW_HIGHLIGHTS.join("|")})`, "gi");
+  const set = new Set(REVIEW_HIGHLIGHTS.map(w => w.toLowerCase()));
+  return text.split(re).map((p, i) =>
+    set.has(p.toLowerCase())
       ? <strong key={i} className="font-semibold text-foreground">{p}</strong>
       : <span key={i}>{p}</span>
   );
