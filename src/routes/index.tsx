@@ -243,8 +243,8 @@ function Index() {
 
               <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs md:text-sm text-white/85">
                 <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 Google</span>
-                <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> +220 avaliações</span>
-                <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> Oficina física em SP</span>
+                <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> +220 avaliações</span>
+                <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> Oficina física em SP</span>
               </div>
             </div>
 
@@ -277,10 +277,10 @@ function Index() {
         <div className="container-x py-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
             {[
-              { icon: ShieldCheck, label: "Garantia nos serviços" },
+              { icon: ShieldGuarantee, label: "Garantia nos serviços" },
               { icon: Star, label: "+220 avaliações" },
               { icon: MapPin, label: "Oficina física" },
-              { icon: Users, label: "Equipe especializada" },
+              { icon: Mechanic, label: "Equipe especializada" },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center justify-center gap-2 text-xs md:text-sm font-semibold uppercase tracking-wide">
                 <Icon className="h-4 w-4 md:h-5 md:w-5 text-primary shrink-0" />
@@ -457,7 +457,7 @@ function Index() {
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
             {diffs.map((d) => (
               <div key={d} data-reveal className="rounded-lg bg-white/5 border border-white/10 p-5 hover:bg-primary/10 hover:border-primary transition">
-                <CheckCircle2 className="h-7 w-7 text-primary" />
+                <ShieldGuarantee className="h-7 w-7 text-primary" />
                 <div className="mt-3 font-display font-bold uppercase text-sm md:text-base">{d}</div>
               </div>
             ))}
@@ -477,7 +477,7 @@ function Index() {
             {trustPoints.map((t) => (
               <div key={t} data-reveal className="flex items-start gap-4 rounded-xl bg-card border border-border p-6 hover:border-primary hover:shadow-lg transition">
                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
-                  <CheckCircle2 className="h-6 w-6" />
+                  <ShieldGuarantee className="h-6 w-6" />
                 </div>
                 <p className="font-display font-bold uppercase text-base md:text-lg leading-snug">{t}</p>
               </div>
@@ -618,9 +618,9 @@ function Index() {
           </a>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs md:text-sm text-white/80">
             <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 no Google</span>
-            <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> +220 avaliações</span>
-            <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> Garantia em todos os serviços</span>
-            <span className="inline-flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" /> Oficina física em SP</span>
+            <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> +220 avaliações</span>
+            <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> Garantia em todos os serviços</span>
+            <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> Oficina física em SP</span>
           </div>
         </div>
       </section>
