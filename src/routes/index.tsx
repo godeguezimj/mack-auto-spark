@@ -687,7 +687,7 @@ function Index() {
             onClick={() => trackWhats("cta_final")}
             className="btn-primary cta-pulse-soft cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
           >
-            <FaWhatsapp className="h-6 w-6" /> Falar com um Mecânico Agora
+            <FaWhatsapp className="h-6 w-6 text-white" /> Falar com um Mecânico Agora
           </a>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs md:text-sm text-white/80">
             <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 no Google</span>
