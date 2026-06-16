@@ -752,48 +752,6 @@ function Index() {
             </p>
           </div>
 
-          {/* GALERIA — grid desktop / carrossel mobile */}
-          <div className="mt-10 md:mt-14">
-            <div
-              className="
-                flex md:grid md:grid-cols-4 md:auto-rows-[180px] gap-3 md:gap-4
-                overflow-x-auto md:overflow-visible snap-x snap-mandatory
-                -mx-4 px-4 md:mx-0 md:px-0 pb-3 md:pb-0
-                [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
-              "
-            >
-              {[
-                { label: "Fachada da oficina", span: "md:col-span-2 md:row-span-2" },
-                { label: "Recepção", span: "md:col-span-1 md:row-span-1" },
-                { label: "Elevadores automotivos", span: "md:col-span-1 md:row-span-2" },
-                { label: "Área interna", span: "md:col-span-1 md:row-span-1" },
-                { label: "Equipamentos profissionais", span: "md:col-span-2 md:row-span-1" },
-                { label: "Veículos em atendimento", span: "md:col-span-1 md:row-span-1" },
-                { label: "Ferramentas profissionais", span: "md:col-span-1 md:row-span-1" },
-                { label: "Área de manutenção", span: "md:col-span-2 md:row-span-1" },
-              ].map(({ label, span }) => (
-                <figure
-                  key={label}
-                  data-reveal
-                  className={`
-                    group relative shrink-0 snap-start
-                    w-[78%] sm:w-[55%] md:w-auto
-                    aspect-[4/3] md:aspect-auto
-                    overflow-hidden rounded-2xl border border-border bg-[var(--ink)]
-                    transition-transform duration-500 hover:-translate-y-1
-                    ${span}
-                  `}
-                >
-                  <div className="absolute inset-0 grid-tech opacity-30 transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-4">
-                    <div className="font-display font-bold uppercase text-white text-sm md:text-base tracking-wide">{label}</div>
-                    <div className="text-[11px] text-white/60 mt-0.5">Foto real em breve</div>
-                  </div>
-                </figure>
-              ))}
-            </div>
-          </div>
 
 
           {/* DESTAQUES DA OFICINA */}
