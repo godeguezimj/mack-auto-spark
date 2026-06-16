@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Phone, MapPin, Star, Sparkles,
@@ -22,14 +21,9 @@ import oficinaElevadores from "@/assets/oficina-elevadores.jpg";
 import oficinaEquipamentos from "@/assets/oficina-equipamentos.jpg";
 import oficinaVeiculos from "@/assets/oficina-veiculos.jpg";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-  head: () => ({
-    links: [
-      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
-    ],
-  }),
-});
+export default function Index() {
+  return <IndexPage />;
+}
 
 const WHATS_NUMBER = "5511978896108";
 const wa = (msg: string) =>
