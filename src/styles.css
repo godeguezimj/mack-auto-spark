@@ -321,3 +321,24 @@
   .pulse-ring,
   .scanline { animation: none !important; }
 }
+
+/* Auto icons — premium automotive style */
+.auto-icon {
+  transition: transform .25s ease, filter .25s ease, color .25s ease;
+  stroke-width: 1.75;
+}
+.auto-icon-tile {
+  transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+}
+@media (hover: hover) {
+  .group:hover .auto-icon,
+  .auto-icon-tile:hover .auto-icon {
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 8px color-mix(in oklab, var(--neon) 65%, transparent));
+  }
+}
+.auto-icon:active,
+.auto-icon-tile:active .auto-icon {
+  transform: scale(0.96);
+  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--neon) 55%, transparent));
+}
