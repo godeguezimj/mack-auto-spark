@@ -383,7 +383,113 @@ function Index() {
         </div>
       </section>
 
+      {/* CONHEÇA NOSSA ESTRUTURA — galeria premium de fotos reais */}
+      <section id="galeria-estrutura" className="py-16 md:py-24 bg-background">
+        <div className="container-x">
+          <div className="text-center max-w-3xl mx-auto" data-reveal>
+            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Nossa estrutura</span>
+            <h2 className="mt-2 font-display font-black text-3xl md:text-5xl uppercase text-balance">
+              Conheça nossa <span className="text-primary">estrutura</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+              Oficina equipada, organizada e preparada para cuidar do seu veículo com segurança e transparência.
+            </p>
+          </div>
+
+          {/* DESKTOP: grid premium (1 grande + 4 menores) | MOBILE: carrossel */}
+          {(() => {
+            const fotos = [
+              { src: oficinaFachada, label: "Fachada da oficina" },
+              { src: oficinaRecepcao, label: "Recepção" },
+              { src: oficinaInterna, label: "Área interna" },
+              { src: oficinaElevadores, label: "Elevadores automotivos" },
+              { src: oficinaEquipamentos, label: "Equipamentos profissionais" },
+              { src: oficinaVeiculos, label: "Veículos em manutenção" },
+            ];
+            const [main, ...rest] = fotos;
+            const small = rest.slice(0, 4);
+            return (
+              <>
+                {/* DESKTOP */}
+                <div
+                  className="mt-10 md:mt-14 hidden md:grid gap-4"
+                  style={{ gridTemplateColumns: "1fr 1fr", gridTemplateRows: "repeat(2, minmax(220px, 1fr))" }}
+                  data-reveal
+                >
+                  <figure
+                    className="group relative row-span-2 overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md"
+                  >
+                    <img
+                      src={main.src}
+                      alt={main.label}
+                      loading="lazy"
+                      width={1280}
+                      height={960}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
+                      <div className="font-display font-bold uppercase text-white text-sm tracking-wide">{main.label}</div>
+                    </div>
+                  </figure>
+                  <div className="grid grid-cols-2 gap-4 row-span-2">
+                    {small.map((f) => (
+                      <figure
+                        key={f.label}
+                        className="group relative overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md"
+                      >
+                        <img
+                          src={f.src}
+                          alt={f.label}
+                          loading="lazy"
+                          width={1024}
+                          height={1024}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent p-3">
+                          <div className="font-display font-bold uppercase text-white text-xs tracking-wide">{f.label}</div>
+                        </div>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+
+                {/* MOBILE — carrossel */}
+                <div
+                  className="mt-8 md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  data-reveal
+                >
+                  {fotos.map((f) => (
+                    <figure
+                      key={f.label}
+                      className="relative shrink-0 snap-center w-[88%] aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md"
+                    >
+                      <img
+                        src={f.src}
+                        alt={f.label}
+                        loading="lazy"
+                        width={1024}
+                        height={768}
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent p-3">
+                        <div className="font-display font-bold uppercase text-white text-xs tracking-wide">{f.label}</div>
+                      </div>
+                    </figure>
+                  ))}
+                </div>
+                <div className="mt-2 md:hidden flex justify-center gap-1.5">
+                  {fotos.map((_, i) => (
+                    <span key={i} className="h-1.5 w-1.5 rounded-full bg-foreground/25" />
+                  ))}
+                </div>
+              </>
+            );
+          })()}
+        </div>
+      </section>
+
       {/* OFERTA */}
+
       <section className="relative bg-[var(--ink)] text-white overflow-hidden">
         <div className="absolute inset-0 grid-tech opacity-30" />
         <div className="container-x relative py-10 md:py-14">
