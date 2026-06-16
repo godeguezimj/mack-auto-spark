@@ -335,29 +335,29 @@ function Index() {
       </section>
 
       {/* SERVIÇOS — apenas os mais procurados */}
-      <section id="servicos" className="py-16 md:py-20 bg-[var(--surface)]">
+      <section id="servicos" className="py-20 md:py-28 bg-[var(--surface)]">
         <div className="container-x">
           <div className="text-center max-w-3xl mx-auto" data-reveal>
-            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Serviços mais procurados</span>
-            <h2 className="mt-2 font-display font-black text-3xl md:text-5xl uppercase">
+            <span className="eyebrow">Serviços mais procurados</span>
+            <h2 className="mt-3 font-display font-bold text-3xl md:text-5xl uppercase">
               Soluções para o seu <span className="text-primary">carro</span>
             </h2>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+          <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {services.map(({ icon: Icon, title, desc }) => (
-              <article key={title} data-reveal className="flex flex-col rounded-xl bg-card border border-border p-5 hover:shadow-xl hover:-translate-y-1 transition">
-                <div className="grid h-12 w-12 place-items-center rounded-lg bg-[var(--ink)] text-primary">
-                  <Icon className="auto-icon h-7 w-7" />
+              <article key={title} data-reveal className="group flex flex-col rounded-lg bg-white border border-border p-6 md:p-7 hover:border-foreground/25 transition">
+                <div className="text-foreground/70 group-hover:text-primary transition">
+                  <Icon className="auto-icon h-8 w-8" />
                 </div>
-                <h3 className="mt-3 font-display font-bold text-base md:text-lg uppercase">{title}</h3>
-                <p className="mt-1 text-xs md:text-sm text-muted-foreground flex-1">{desc}</p>
+                <h3 className="mt-5 font-display font-semibold text-base md:text-lg uppercase tracking-tight">{title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground flex-1 leading-relaxed">{desc}</p>
                 <a
                   href={wa(`Olá! Quero RECEBER ORÇAMENTO PELO WHATSAPP para: ${title}`)}
                   onClick={() => trackWhats(`servico_${title}`)}
-                  className="btn-primary mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2.5 text-xs md:text-sm font-bold uppercase"
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all"
                 >
-                  <MessageCircle className="h-4 w-4" /> Orçamento
+                  Solicitar orçamento <span aria-hidden>→</span>
                 </a>
               </article>
             ))}
