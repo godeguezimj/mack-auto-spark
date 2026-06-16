@@ -451,11 +451,11 @@ function Index() {
           </div>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {trustPoints.map((t) => (
-              <div key={t} data-reveal className="flex items-start gap-4 rounded-xl bg-card border border-border p-6 hover:border-primary hover:shadow-lg transition">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+              <div key={t} data-reveal className="flex items-start gap-4 rounded-lg bg-card border border-border p-6 hover:border-foreground/25 transition">
+                <div className="text-primary shrink-0 mt-0.5">
                   <ShieldGuarantee className="h-6 w-6" />
                 </div>
-                <p className="font-display font-bold uppercase text-base md:text-lg leading-snug">{t}</p>
+                <p className="font-display font-semibold uppercase text-base md:text-lg leading-snug tracking-tight">{t}</p>
               </div>
             ))}
           </div>
