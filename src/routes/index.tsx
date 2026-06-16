@@ -1,11 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  Phone, MessageCircle, MapPin, Star, ShieldCheck, Wrench, Gauge,
-  Cog, Zap, Car, Disc, Sparkles, CheckCircle2,
-  AlertTriangle, Volume2, Fuel, LampDesk, ChevronDown, Clock, Users,
+  Phone, MessageCircle, MapPin, Star, Sparkles,
+  AlertTriangle, ChevronDown, Clock,
   HelpCircle, X, List,
 } from "lucide-react";
+import {
+  ShockAbsorber, DashboardAlert, BrakeDisc, EngineBlock, ClimateVent,
+  FuelPump, ServiceClipboard, DiagnosticScanner, OilCan, Transmission,
+  Wheel, ShieldGuarantee, Mechanic, CertifiedPart, Stopwatch,
+  SpeechBubble, QuoteDocument,
+} from "@/components/auto-icons";
 import heroImg from "@/assets/hero-oficina.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
 
