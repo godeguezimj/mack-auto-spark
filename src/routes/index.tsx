@@ -432,29 +432,61 @@ function Index() {
             <h2 className="mt-5 font-display font-black text-3xl md:text-5xl uppercase">
               Clientes que <span className="text-primary">confiam na MACK</span>
             </h2>
+            <p className="mt-4 text-base md:text-lg text-muted-foreground">
+              Mais de <strong className="text-foreground">220 avaliações</strong> e nota <strong className="text-foreground">4,6</strong> no Google.
+            </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviews.map((r) => (
-              <figure key={r.name} data-reveal className="rounded-2xl bg-card border-2 border-border p-7 md:p-8 shadow-md hover:shadow-2xl hover:border-primary/60 transition">
-                <div className="flex items-center justify-between">
-                  <div className="flex">
-                    {[1,2,3,4,5].map(i => <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />)}
+          <div className="mt-10 -mx-4 md:-mx-6">
+            <div className="flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 md:px-6 pb-6 [scrollbar-width:thin]">
+              {reviews.map((r) => (
+                <figure
+                  key={r.name}
+                  data-reveal
+                  className="snap-center shrink-0 w-[88%] sm:w-[420px] md:w-[440px] rounded-2xl bg-card border border-border p-6 md:p-7 shadow-sm hover:shadow-lg hover:border-primary/50 transition flex flex-col"
+                >
+                  <figcaption className="flex items-center gap-3">
+                    <div
+                      className="grid h-12 w-12 place-items-center rounded-full text-white font-bold text-lg shrink-0"
+                      style={{ background: r.color }}
+                      aria-hidden
+                    >
+                      {r.name.charAt(0)}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="font-semibold text-base truncate">{r.name}</div>
+                      <div className="text-xs text-muted-foreground">Avaliação local · Local Guide</div>
+                    </div>
+                    <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0" aria-label="Google">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.99.66-2.25 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.11A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.44.34-2.11V7.05H2.18A11 11 0 0 0 1 12c0 1.78.43 3.46 1.18 4.95l3.66-2.84z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+                    </svg>
+                  </figcaption>
+                  <div className="mt-4 flex items-center gap-2">
+                    <div className="flex">
+                      {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+                    </div>
+                    <span className="text-xs text-muted-foreground">{r.time}</span>
                   </div>
-                  <svg viewBox="0 0 24 24" className="h-6 w-6" aria-label="Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.99.66-2.25 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.44.34-2.11V7.05H2.18A11 11 0 0 0 1 12c0 1.78.43 3.46 1.18 4.95l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
-                </div>
-                <blockquote className="mt-4 text-foreground leading-relaxed text-base md:text-lg">"{r.text}"</blockquote>
-                <figcaption className="mt-5 flex items-center gap-3">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-primary text-white font-bold text-lg">
-                    {r.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-base">{r.name}</div>
-                    <div className="text-xs text-muted-foreground">Cliente verificado · Google</div>
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
+                  <blockquote className="mt-3 text-foreground/90 leading-relaxed text-[15px] md:text-base">
+                    {highlightReview(r.text)}
+                  </blockquote>
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 text-center">
+            <a
+              href="https://www.google.com/search?q=Mack+Auto+Service+S%C3%A3o+Paulo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              Ver todas as avaliações no Google →
+            </a>
           </div>
         </div>
       </section>
