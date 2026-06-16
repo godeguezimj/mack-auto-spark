@@ -284,12 +284,12 @@ function Index() {
                 href={wa(`Olá! Meu carro está com: ${title}. Pode me ajudar?`)}
                 onClick={() => trackWhats(`dor_${title}`)}
                 data-reveal
-                className="group rounded-xl border border-border bg-card p-4 md:p-6 hover:border-primary hover:shadow-lg transition"
+                className="group rounded-lg border border-border bg-card p-5 md:p-7 hover:border-foreground/30 hover:shadow-sm transition"
               >
-                <div className="grid h-10 w-10 md:h-12 md:w-12 place-items-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition">
-                  <Icon className="auto-icon h-6 w-6 md:h-7 md:w-7" />
+                <div className="text-foreground/70 group-hover:text-primary transition">
+                  <Icon className="auto-icon h-7 w-7 md:h-8 md:w-8" />
                 </div>
-                <h3 className="mt-3 font-display font-bold text-sm md:text-xl uppercase">{title}</h3>
+                <h3 className="mt-4 font-display font-semibold text-sm md:text-lg uppercase tracking-tight">{title}</h3>
                 <p className="mt-1 text-xs md:text-sm text-muted-foreground hidden md:block">{desc}</p>
               </a>
             ))}
