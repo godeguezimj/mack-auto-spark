@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  Phone, MessageCircle, MapPin, Star, Sparkles,
+  Phone, MapPin, Star, Sparkles,
   AlertTriangle, ChevronDown, Clock,
   HelpCircle, X, List,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   ShockAbsorber, DashboardAlert, BrakeDisc, EngineBlock, ClimateVent,
   FuelPump, ServiceClipboard, DiagnosticScanner, OilCan, Transmission,
@@ -98,7 +99,7 @@ const helpOptions = [
   { icon: DashboardAlert, label: "Luz acesa no painel", msg: "Olá! Tem uma LUZ ACESA no painel do meu carro. Pode me ajudar?" },
   { icon: BrakeDisc, label: "Problema nos freios", msg: "Olá! Estou com PROBLEMA NOS FREIOS. Pode me ajudar?" },
   { icon: EngineBlock, label: "Motor falhando", msg: "Olá! Meu MOTOR está FALHANDO. Pode me ajudar?" },
-  { icon: MessageCircle, label: "Falar com especialista", msg: "Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service." },
+  { icon: FaWhatsapp, label: "Falar com especialista", msg: "Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service." },
 ];
 
 const CTA_SECONDARY = "RECEBER AVALIAÇÃO PELO WHATSAPP";
@@ -193,7 +194,7 @@ function Index() {
             onClick={() => trackWhats("header")}
             className="btn-primary hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold"
           >
-            <MessageCircle className="h-4 w-4" /> WhatsApp
+            <FaWhatsapp className="h-4 w-4 text-white" /> WhatsApp
           </a>
         </div>
       </header>
@@ -226,7 +227,7 @@ function Index() {
                 onClick={() => trackWhats("hero_primary")}
                 className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm"
               >
-                <MessageCircle className="h-5 w-5" /> Receber Diagnóstico
+                <FaWhatsapp className="h-5 w-5 text-white" /> Receber Diagnóstico
               </a>
               <a
                 href="#mapa"
@@ -301,7 +302,7 @@ function Index() {
               onClick={() => trackWhats("dores_cta")}
               className="btn-primary inline-flex items-center gap-2 rounded-xl px-7 py-4 font-bold uppercase tracking-wide"
             >
-              <MessageCircle className="h-5 w-5" /> Quero Resolver Esse Problema
+              <FaWhatsapp className="h-5 w-5 text-white" /> Quero Resolver Esse Problema
             </a>
           </div>
         </div>
@@ -328,7 +329,7 @@ function Index() {
               onClick={() => trackWhats("oferta_checkup")}
               className="btn-primary cta-checkup inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-bold uppercase tracking-wide text-sm md:text-base whitespace-nowrap"
             >
-              <MessageCircle className="h-5 w-5" /> Agendar Check-up
+              <FaWhatsapp className="h-5 w-5 text-white" /> Agendar Check-up
             </a>
           </div>
         </div>
@@ -686,7 +687,7 @@ function Index() {
             onClick={() => trackWhats("cta_final")}
             className="btn-primary cta-pulse-soft cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
           >
-            <MessageCircle className="h-6 w-6" /> Falar com um Mecânico Agora
+            <FaWhatsapp className="h-6 w-6 text-white" /> Falar com um Mecânico Agora
           </a>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs md:text-sm text-white/80">
             <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 no Google</span>
@@ -774,7 +775,7 @@ function Index() {
           onClick={() => trackWhats("mobile_bar_whats")}
           className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition"
         >
-          <MessageCircle className="h-5 w-5 text-[var(--whats,#25D366)]" />
+          <FaWhatsapp className="h-5 w-5 text-[var(--whats,#25D366)]" />
           WhatsApp
         </a>
         <a
