@@ -194,7 +194,7 @@ function Index() {
             onClick={() => trackWhats("header")}
             className="btn-primary hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold"
           >
-            <MessageCircle className="h-4 w-4" /> WhatsApp
+            <FaWhatsapp className="h-4 w-4" /> WhatsApp
           </a>
         </div>
       </header>
