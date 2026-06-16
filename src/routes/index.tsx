@@ -564,31 +564,127 @@ function Index() {
         </div>
       </section>
 
-      {/* EQUIPE — movida para próximo do final */}
-      <section className="py-16 md:py-20 bg-[var(--surface)]">
+      {/* CONHEÇA A MACK AUTO SERVICE — substitui "Nossa Equipe" */}
+      <section id="estrutura" className="py-16 md:py-24 bg-[var(--surface)]">
         <div className="container-x">
           <div className="text-center max-w-3xl mx-auto" data-reveal>
-            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Nossa Equipe</span>
+            <span className="text-primary font-semibold uppercase text-sm tracking-wider">Nossa Estrutura</span>
             <h2 className="mt-2 font-display font-black text-3xl md:text-5xl uppercase">
-              Conheça <span className="text-primary">nossa equipe</span>
+              Conheça a <span className="text-primary">Mack Auto Service</span>
             </h2>
-            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-              Mecânicos experientes, treinados em diagnóstico moderno. Cada veículo é tratado como se fosse nosso.
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+              Estrutura completa, equipamentos modernos e atendimento transparente para cuidar do seu veículo com segurança.
             </p>
           </div>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {["Equipe Mack Auto Service", "Box de diagnóstico", "Bancada técnica"].map((label) => (
-              <div key={label} data-reveal className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-[var(--ink)]">
-                <div className="absolute inset-0 grid-tech opacity-25" />
+
+          {/* GALERIA — grid desktop / carrossel mobile */}
+          <div className="mt-10 md:mt-14">
+            <div
+              className="
+                flex md:grid md:grid-cols-4 md:auto-rows-[180px] gap-3 md:gap-4
+                overflow-x-auto md:overflow-visible snap-x snap-mandatory
+                -mx-4 px-4 md:mx-0 md:px-0 pb-3 md:pb-0
+                [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
+              "
+            >
+              {[
+                { label: "Fachada da oficina", span: "md:col-span-2 md:row-span-2" },
+                { label: "Recepção", span: "md:col-span-1 md:row-span-1" },
+                { label: "Elevadores automotivos", span: "md:col-span-1 md:row-span-2" },
+                { label: "Área interna", span: "md:col-span-1 md:row-span-1" },
+                { label: "Equipamentos profissionais", span: "md:col-span-2 md:row-span-1" },
+                { label: "Veículos em atendimento", span: "md:col-span-1 md:row-span-1" },
+                { label: "Ferramentas profissionais", span: "md:col-span-1 md:row-span-1" },
+                { label: "Área de manutenção", span: "md:col-span-2 md:row-span-1" },
+              ].map(({ label, span }) => (
+                <figure
+                  key={label}
+                  data-reveal
+                  className={`
+                    group relative shrink-0 snap-start
+                    w-[78%] sm:w-[55%] md:w-auto
+                    aspect-[4/3] md:aspect-auto
+                    overflow-hidden rounded-2xl border border-border bg-[var(--ink)]
+                    transition-transform duration-500 hover:-translate-y-1
+                    ${span}
+                  `}
+                >
+                  <div className="absolute inset-0 grid-tech opacity-30 transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-4">
+                    <div className="font-display font-bold uppercase text-white text-sm md:text-base tracking-wide">{label}</div>
+                    <div className="text-[11px] text-white/60 mt-0.5">Foto real em breve</div>
+                  </div>
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          {/* VÍDEO INSTITUCIONAL */}
+          <div className="mt-14 md:mt-20" data-reveal>
+            <div className="text-center max-w-2xl mx-auto">
+              <span className="text-primary font-semibold uppercase text-sm tracking-wider">Tour pela oficina</span>
+              <h3 className="mt-2 font-display font-black text-2xl md:text-4xl uppercase">
+                Veja nossa <span className="text-primary">estrutura</span>
+              </h3>
+            </div>
+            <div className="mt-6 mx-auto max-w-4xl rounded-2xl overflow-hidden border border-border shadow-2xl bg-[var(--ink)]">
+              <div className="relative aspect-video">
+                <div className="absolute inset-0 grid-tech opacity-40" />
                 <div className="absolute inset-0 grid place-items-center text-center p-6">
                   <div>
-                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/15 text-primary">
-                      <Mechanic className="h-7 w-7" />
+                    <div className="mx-auto grid h-16 w-16 md:h-20 md:w-20 place-items-center rounded-full bg-primary text-white shadow-[0_0_40px_rgba(0,191,255,0.6)]">
+                      <svg viewBox="0 0 24 24" className="h-8 w-8 md:h-10 md:w-10 ml-1" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
                     </div>
-                    <div className="mt-3 font-display font-bold uppercase text-white text-lg">{label}</div>
-                    <div className="text-xs text-white/60 mt-1">Foto real em breve</div>
+                    <div className="mt-4 font-display font-bold uppercase text-white text-base md:text-lg">Vídeo institucional em breve</div>
+                    <div className="text-xs text-white/60 mt-1">Tour completo pela estrutura da oficina</div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* DESTAQUES DA OFICINA */}
+          <div className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+            {[
+              { icon: ServiceClipboard, label: "Estrutura moderna" },
+              { icon: DiagnosticScanner, label: "Equipamentos profissionais" },
+              { icon: SpeechBubble, label: "Atendimento transparente" },
+              { icon: ShieldGuarantee, label: "Serviços com garantia" },
+              { icon: EngineBlock, label: "Diagnóstico especializado" },
+              { icon: Wheel, label: "Ambiente organizado" },
+            ].map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                data-reveal
+                className="group auto-icon-tile flex items-center gap-3 rounded-xl bg-card border border-border p-4 md:p-5 hover:border-primary hover:shadow-lg transition"
+              >
+                <div className="grid h-11 w-11 md:h-12 md:w-12 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+                  <Icon className="auto-icon h-6 w-6 md:h-7 md:w-7" />
+                </div>
+                <div className="font-display font-bold uppercase text-xs md:text-sm leading-tight">{label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* PROVA SOCIAL — mini estatísticas */}
+          <div className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+            {[
+              { value: "+220", label: "Avaliações reais" },
+              { value: "4,6", label: "Estrelas no Google", star: true },
+              { value: "SP", label: "Oficina física em São Paulo" },
+              { value: "+1k", label: "Veículos atendidos" },
+            ].map(({ value, label, star }) => (
+              <div
+                key={label}
+                data-reveal
+                className="rounded-xl bg-[var(--ink)] text-white p-5 text-center border border-white/10 hover:border-primary/60 transition"
+              >
+                <div className="flex items-center justify-center gap-1 font-display font-black text-2xl md:text-4xl text-primary text-glow">
+                  {star && <Star className="h-6 w-6 md:h-7 md:w-7 fill-yellow-400 text-yellow-400" />}
+                  {value}
+                </div>
+                <div className="mt-1 text-[11px] md:text-xs uppercase tracking-wider text-white/70">{label}</div>
               </div>
             ))}
           </div>
