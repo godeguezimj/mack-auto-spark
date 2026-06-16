@@ -227,7 +227,7 @@ function Index() {
                 onClick={() => trackWhats("hero_primary")}
                 className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm"
               >
-                <FaWhatsapp className="h-5 w-5" /> Receber Diagnóstico
+                <FaWhatsapp className="h-5 w-5 text-white" /> Receber Diagnóstico
               </a>
               <a
                 href="#mapa"
