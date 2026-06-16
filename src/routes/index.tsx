@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  Phone, MessageCircle, MapPin, Star, Sparkles,
+  Phone, MapPin, Star, Sparkles,
   AlertTriangle, ChevronDown, Clock,
   HelpCircle, X, List,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   ShockAbsorber, DashboardAlert, BrakeDisc, EngineBlock, ClimateVent,
   FuelPump, ServiceClipboard, DiagnosticScanner, OilCan, Transmission,
