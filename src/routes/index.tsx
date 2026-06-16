@@ -13,6 +13,7 @@ import {
   SpeechBubble, QuoteDocument,
 } from "@/components/auto-icons";
 import heroImg from "@/assets/hero-oficina.jpg";
+import atendenteImg from "@/assets/atendente.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -273,13 +274,14 @@ function Index() {
               Diagnóstico especializado antes que o prejuízo aumente.
             </p>
 
-            <div className="mt-9 flex flex-col sm:flex-row gap-3">
+            <div className="mt-9 flex flex-col sm:flex-row gap-3 wa-rise">
               <a
-                href={wa("Olá! Quero RECEBER DIAGNÓSTICO PELO WHATSAPP do meu veículo.")}
+                href={wa("Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service sobre o meu veículo.")}
                 onClick={() => trackWhats("hero_primary")}
                 className="btn-primary inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm"
               >
-                <FaWhatsapp className="h-5 w-5 text-white" /> Receber Diagnóstico
+                <span className="wa-breathe"><FaWhatsapp className="h-5 w-5 text-white" /></span>
+                Falar com um Especialista
               </a>
               <a
                 href="#mapa"
@@ -289,13 +291,28 @@ function Index() {
               </a>
             </div>
 
-            <div className="mt-10 flex items-center gap-3 text-sm text-white/75">
-              <div className="flex">
-                {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+            {/* Online status — atendimento humano */}
+            <div className="mt-4 flex items-center gap-2 text-sm text-white/85 wa-rise">
+              <span className="online-dot" aria-hidden />
+              <span className="font-semibold text-white">Online agora</span>
+              <span className="text-white/40">·</span>
+              <span className="text-white/70">Resposta rápida em horário comercial</span>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/75">
+              <div className="flex items-center gap-1.5">
+                <div className="flex">
+                  {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+                </div>
+                <span className="font-semibold text-white">4,6</span>
+                <span className="text-white/50">no Google</span>
               </div>
-              <span className="font-semibold text-white">4,6</span>
-              <span className="text-white/50">·</span>
-              <span>+220 avaliações no Google</span>
+              <span className="text-white/30">·</span>
+              <span>+220 avaliações</span>
+              <span className="text-white/30">·</span>
+              <span className="inline-flex items-center gap-1.5">
+                <FaWhatsapp className="h-4 w-4 text-[#25D366]" /> Atendimento via WhatsApp
+              </span>
             </div>
           </div>
         </div>
@@ -767,12 +784,19 @@ function Index() {
             Pequenos defeitos viram grandes prejuízos. Quanto antes identificar, menor o custo do reparo.
           </p>
           <a
-            href={wa("Olá! Quero FALAR COM UM MECÂNICO AGORA.")}
+            href={wa("Olá! Quero FALAR COM UM ESPECIALISTA agora sobre o meu veículo.")}
             onClick={() => trackWhats("cta_final")}
-            className="btn-primary cta-pulse-soft cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
+            className="btn-primary cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
           >
-            <FaWhatsapp className="h-6 w-6 text-white" /> Falar com um Mecânico Agora
+            <span className="wa-breathe"><FaWhatsapp className="h-6 w-6 text-white" /></span>
+            Falar com um Especialista
           </a>
+          <div className="mt-4 flex items-center justify-center gap-2 text-sm text-white/80">
+            <span className="online-dot" aria-hidden />
+            <span className="font-semibold text-white">Online agora</span>
+            <span className="text-white/40">·</span>
+            <span>Equipe disponível no WhatsApp</span>
+          </div>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs md:text-sm text-white/80">
             <span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-yellow-400 text-yellow-400" /> 4,6 no Google</span>
             <span className="inline-flex items-center gap-1"><ShieldGuarantee className="h-4 w-4 text-primary" /> +220 avaliações</span>
