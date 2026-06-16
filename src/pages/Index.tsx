@@ -20,6 +20,7 @@ import oficinaInterna from "@/assets/oficina-interna.jpg";
 import oficinaElevadores from "@/assets/oficina-elevadores.jpg";
 import oficinaEquipamentos from "@/assets/oficina-equipamentos.jpg";
 import oficinaVeiculos from "@/assets/oficina-veiculos.jpg";
+import ReviewsCarousel from "@/components/ReviewsCarousel";
 
 
 const WHATS_NUMBER = "5511978896108";
