@@ -775,7 +775,7 @@ function Index() {
           onClick={() => trackWhats("mobile_bar_whats")}
           className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold uppercase text-white hover:bg-primary/20 transition"
         >
-          <MessageCircle className="h-5 w-5 text-[var(--whats,#25D366)]" />
+          <FaWhatsapp className="h-5 w-5 text-[var(--whats,#25D366)]" />
           WhatsApp
         </a>
         <a
