@@ -266,7 +266,7 @@ function Index() {
 
         <div className="container-x py-16 md:py-28 text-white">
           <div className="max-w-3xl">
-            <span className="eyebrow text-white/60">Centro Automotivo · São Paulo</span>
+            
             <h1 className="mt-4 font-display font-bold text-3xl sm:text-5xl md:text-6xl leading-[1.02] uppercase text-balance">
               Carro com barulho, luz no painel ou <span className="text-primary">falhas?</span>
             </h1>
