@@ -11,6 +11,11 @@ import mackLogo from "@/assets/mack-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    links: [
+      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
+    ],
+  }),
 });
 
 const WHATS_NUMBER = "5511978896108";
@@ -191,6 +196,7 @@ function Index() {
           alt="Oficina mecânica Mack Auto Service em São Paulo"
           width={1920}
           height={1080}
+          fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover opacity-40 -z-10"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/90 to-[var(--ink)]/60" />
