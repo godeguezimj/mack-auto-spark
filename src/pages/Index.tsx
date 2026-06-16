@@ -154,7 +154,7 @@ const helpOptions = [
 
 const CTA_SECONDARY = "RECEBER AVALIAÇÃO PELO WHATSAPP";
 
-function Index() {
+export default function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [helpOpen, setHelpOpen] = useState(false);
 
