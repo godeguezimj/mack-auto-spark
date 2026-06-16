@@ -21,9 +21,6 @@ import oficinaElevadores from "@/assets/oficina-elevadores.jpg";
 import oficinaEquipamentos from "@/assets/oficina-equipamentos.jpg";
 import oficinaVeiculos from "@/assets/oficina-veiculos.jpg";
 
-export default function Index() {
-  return <IndexPage />;
-}
 
 const WHATS_NUMBER = "5511978896108";
 const wa = (msg: string) =>
