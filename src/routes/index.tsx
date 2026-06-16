@@ -136,7 +136,7 @@ const trustPoints = [
   "Equipe experiente com anos de oficina",
 ];
 
-const brands = ["Bosch", "NGK", "Mobil", "Castrol", "Shell", "Mann Filter"];
+
 
 const faqs = [
   { q: "Vocês cobram pelo orçamento?", a: "Não. O orçamento e a avaliação inicial são totalmente gratuitos. Você só aprova o serviço se quiser seguir em frente." },
@@ -508,21 +508,6 @@ function Index() {
         </div>
       </section>
 
-      {/* LOGOS DE MARCAS */}
-      <section className="py-10 bg-[var(--surface)] border-y border-border">
-        <div className="container-x">
-          <div className="text-center font-display font-bold uppercase text-sm tracking-widest text-muted-foreground">
-            Trabalhamos com peças e produtos de qualidade
-          </div>
-          <div className="mt-5 grid grid-cols-3 md:grid-cols-6 gap-6 items-center">
-            {brands.map((b) => (
-              <div key={b} className="text-center font-display font-black text-lg md:text-2xl uppercase tracking-wider text-foreground/40 grayscale hover:text-primary hover:grayscale-0 transition">
-                {b}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section id="diferenciais" className="py-20 md:py-28 bg-white">
         <div className="container-x">
