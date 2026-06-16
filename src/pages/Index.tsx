@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Phone, MapPin, Star, Sparkles,
@@ -22,14 +21,6 @@ import oficinaElevadores from "@/assets/oficina-elevadores.jpg";
 import oficinaEquipamentos from "@/assets/oficina-equipamentos.jpg";
 import oficinaVeiculos from "@/assets/oficina-veiculos.jpg";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-  head: () => ({
-    links: [
-      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
-    ],
-  }),
-});
 
 const WHATS_NUMBER = "5511978896108";
 const wa = (msg: string) =>
@@ -163,7 +154,7 @@ const helpOptions = [
 
 const CTA_SECONDARY = "RECEBER AVALIAÇÃO PELO WHATSAPP";
 
-function Index() {
+export default function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [helpOpen, setHelpOpen] = useState(false);
 
