@@ -15,6 +15,12 @@ import {
 import heroImg from "@/assets/hero-oficina.jpg";
 import atendenteImg from "@/assets/atendente.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
+import oficinaFachada from "@/assets/oficina-fachada.jpg";
+import oficinaRecepcao from "@/assets/oficina-recepcao.jpg";
+import oficinaInterna from "@/assets/oficina-interna.jpg";
+import oficinaElevadores from "@/assets/oficina-elevadores.jpg";
+import oficinaEquipamentos from "@/assets/oficina-equipamentos.jpg";
+import oficinaVeiculos from "@/assets/oficina-veiculos.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
