@@ -234,7 +234,7 @@ export default function Index() {
       <header className="sticky top-0 z-40 bg-[var(--ink)]/85 backdrop-blur-xl border-b border-white/10">
         <div className="container-x flex items-center justify-between py-4 md:py-5">
           <a href="#top" className="flex items-center gap-2">
-            <img src={mackLogo.url} alt="MACK Auto Service" width={264} height={88} className="h-16 md:h-[88px] w-auto object-contain drop-shadow-[0_0_18px_rgba(0,191,255,0.45)]" />
+            <img src={mackLogo.url} alt="MACK Auto Service" width={204} height={68} className="h-12 md:h-[68px] w-auto object-contain drop-shadow-[0_0_18px_rgba(0,191,255,0.45)]" />
           </a>
           <nav className="hidden md:flex items-center gap-6 text-white/80 text-sm font-medium">
             <a href="#servicos" className="hover:text-primary transition">Serviços</a>
