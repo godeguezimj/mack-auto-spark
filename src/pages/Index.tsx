@@ -23,6 +23,7 @@ import estVeiculos from "@/assets/estrutura/veiculos.jpeg.asset.json";
 import estBosch from "@/assets/estrutura/bosch.jpeg.asset.json";
 
 import ReviewsCarousel from "@/components/ReviewsCarousel";
+import EstruturaGallery from "@/components/EstruturaGallery";
 
 
 const WHATS_NUMBER = "5511978896108";
