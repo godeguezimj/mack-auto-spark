@@ -14,12 +14,14 @@ import {
 import heroImg from "@/assets/fachada-real-oficina.jpg.asset.json";
 import atendenteImg from "@/assets/atendente.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
-import oficinaFachada from "@/assets/oficina-fachada.jpg";
-import oficinaRecepcao from "@/assets/oficina-recepcao.jpg";
-import oficinaInterna from "@/assets/oficina-interna.jpg";
-import oficinaElevadores from "@/assets/oficina-elevadores.jpg";
-import oficinaEquipamentos from "@/assets/oficina-equipamentos.jpg";
-import oficinaVeiculos from "@/assets/oficina-veiculos.jpg";
+import estFachada from "@/assets/estrutura/fachada.jpeg.asset.json";
+import estFachadaLateral from "@/assets/estrutura/fachada-lateral.jpeg.asset.json";
+import estAreaPrincipal from "@/assets/estrutura/area-principal.jpeg.asset.json";
+import estAreaAmpla from "@/assets/estrutura/area-ampla.jpeg.asset.json";
+import estElevadores from "@/assets/estrutura/elevadores.jpeg.asset.json";
+import estVeiculos from "@/assets/estrutura/veiculos.jpeg.asset.json";
+import estBosch from "@/assets/estrutura/bosch.jpeg.asset.json";
+
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 
 
@@ -388,53 +390,34 @@ export default function Index() {
             </p>
           </div>
 
-          {/* DESKTOP: grid premium (1 grande + 4 menores) | MOBILE: carrossel */}
+          {/* DESKTOP: galeria premium | MOBILE: carrossel */}
           {(() => {
             const fotos = [
-              { src: oficinaFachada, label: "Fachada da oficina" },
-              { src: oficinaRecepcao, label: "Recepção" },
-              { src: oficinaInterna, label: "Área interna" },
-              { src: oficinaElevadores, label: "Elevadores automotivos" },
-              { src: oficinaEquipamentos, label: "Equipamentos profissionais" },
-              { src: oficinaVeiculos, label: "Veículos em manutenção" },
+              { src: estFachada.url, label: "Fachada Mack Auto Service", span: "md:col-span-2" },
+              { src: estAreaPrincipal.url, label: "Área principal da oficina", span: "md:col-span-1" },
+              { src: estElevadores.url, label: "Elevadores automotivos", span: "md:col-span-1" },
+              { src: estVeiculos.url, label: "Veículos em manutenção", span: "md:col-span-1" },
+              { src: estBosch.url, label: "Diagnóstico Bosch", span: "md:col-span-1" },
+              { src: estFachadaLateral.url, label: "Entrada lateral", span: "md:col-span-2" },
+              { src: estAreaAmpla.url, label: "Área ampla de atendimento", span: "md:col-span-1" },
             ];
-            const [main, ...rest] = fotos;
-            const small = rest.slice(0, 4);
             return (
               <>
                 {/* DESKTOP */}
-                <div
-                  className="mt-10 md:mt-14 hidden md:grid gap-4"
-                  style={{ gridTemplateColumns: "1fr 1fr", gridTemplateRows: "repeat(2, minmax(220px, 1fr))" }}
-                  data-reveal
-                >
-                  <figure className="group relative row-span-2 overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md">
-                    <img
-                      src={main.src}
-                      alt={main.label}
-                      loading="lazy"
-                      width={1280}
-                      height={960}
-                      className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
-                    />
-                  </figure>
-                  <div className="grid grid-cols-2 gap-4 row-span-2">
-                    {small.map((f) => (
-                      <figure
-                        key={f.label}
-                        className="group relative overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md"
-                      >
-                        <img
-                          src={f.src}
-                          alt={f.label}
-                          loading="lazy"
-                          width={1024}
-                          height={1024}
-                          className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
-                        />
-                      </figure>
-                    ))}
-                  </div>
+                <div className="mt-10 md:mt-14 hidden md:grid md:grid-cols-3 gap-4" data-reveal>
+                  {fotos.map((f) => (
+                    <figure
+                      key={f.label}
+                      className={`group relative overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-sm aspect-[4/3] ${f.span}`}
+                    >
+                      <img
+                        src={f.src}
+                        alt={f.label}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+                      />
+                    </figure>
+                  ))}
                 </div>
 
                 {/* MOBILE — carrossel */}
@@ -445,14 +428,12 @@ export default function Index() {
                   {fotos.map((f) => (
                     <figure
                       key={f.label}
-                      className="relative shrink-0 snap-center w-[88%] aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md"
+                      className="relative shrink-0 snap-center w-[92%] aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-sm"
                     >
                       <img
                         src={f.src}
                         alt={f.label}
                         loading="lazy"
-                        width={1024}
-                        height={768}
                         className="h-full w-full object-cover"
                       />
                     </figure>
@@ -464,9 +445,9 @@ export default function Index() {
                   ))}
                 </div>
               </>
-
             );
           })()}
+
         </div>
       </section>
 
