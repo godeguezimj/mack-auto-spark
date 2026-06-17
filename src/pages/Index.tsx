@@ -253,7 +253,7 @@ export default function Index() {
       {/* HERO — simplificado, premium e respirável */}
       <section id="top" className="relative isolate overflow-hidden bg-[var(--ink)]">
         <img
-          src={heroImg}
+          src={heroImg.url}
           alt="Oficina mecânica Mack Auto Service em São Paulo"
           width={1920}
           height={1080}
