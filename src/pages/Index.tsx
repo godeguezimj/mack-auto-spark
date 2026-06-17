@@ -23,6 +23,7 @@ import estVeiculos from "@/assets/estrutura/veiculos.jpeg.asset.json";
 import estBosch from "@/assets/estrutura/bosch.jpeg.asset.json";
 
 import ReviewsCarousel from "@/components/ReviewsCarousel";
+import EstruturaGallery from "@/components/EstruturaGallery";
 
 
 const WHATS_NUMBER = "5511978896108";
@@ -390,63 +391,40 @@ export default function Index() {
             </p>
           </div>
 
-          {/* DESKTOP: galeria premium | MOBILE: carrossel */}
-          {(() => {
-            const fotos = [
-              { src: estFachada.url, label: "Fachada Mack Auto Service", span: "md:col-span-2" },
-              { src: estAreaPrincipal.url, label: "Área principal da oficina", span: "md:col-span-1" },
-              { src: estElevadores.url, label: "Elevadores automotivos", span: "md:col-span-1" },
-              { src: estVeiculos.url, label: "Veículos em manutenção", span: "md:col-span-1" },
-              { src: estBosch.url, label: "Diagnóstico Bosch", span: "md:col-span-1" },
-              { src: estFachadaLateral.url, label: "Entrada lateral", span: "md:col-span-2" },
-              { src: estAreaAmpla.url, label: "Área ampla de atendimento", span: "md:col-span-1" },
-            ];
-            return (
-              <>
-                {/* DESKTOP */}
-                <div className="mt-10 md:mt-14 hidden md:grid md:grid-cols-3 gap-4" data-reveal>
-                  {fotos.map((f) => (
-                    <figure
-                      key={f.label}
-                      className={`group relative overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-sm aspect-[4/3] ${f.span}`}
-                    >
-                      <img
-                        src={f.src}
-                        alt={f.label}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
-                      />
-                    </figure>
-                  ))}
-                </div>
+          <EstruturaGallery
+            fotos={[
+              { src: estFachada.url, alt: "Fachada Mack Auto Service" },
+              { src: estAreaPrincipal.url, alt: "Área principal da oficina" },
+              { src: estElevadores.url, alt: "Elevadores automotivos" },
+              { src: estVeiculos.url, alt: "Veículos em manutenção" },
+              { src: estBosch.url, alt: "Diagnóstico Bosch" },
+              { src: estFachadaLateral.url, alt: "Entrada lateral da oficina" },
+              { src: estAreaAmpla.url, alt: "Área ampla de atendimento" },
+            ]}
+          />
 
-                {/* MOBILE — carrossel */}
-                <div
-                  className="mt-8 md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                  data-reveal
-                >
-                  {fotos.map((f) => (
-                    <figure
-                      key={f.label}
-                      className="relative shrink-0 snap-center w-[92%] aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-sm"
-                    >
-                      <img
-                        src={f.src}
-                        alt={f.label}
-                        loading="lazy"
-                        className="h-full w-full object-cover"
-                      />
-                    </figure>
-                  ))}
-                </div>
-                <div className="mt-2 md:hidden flex justify-center gap-1.5">
-                  {fotos.map((_, i) => (
-                    <span key={i} className="h-1.5 w-1.5 rounded-full bg-foreground/25" />
-                  ))}
-                </div>
-              </>
-            );
-          })()}
+          {/* Selo de confiança — faixa discreta */}
+          <div className="mt-10 md:mt-14 border-t border-border pt-6 md:pt-8" data-reveal>
+            <ul className="grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-6 text-center text-sm md:text-[15px] text-muted-foreground">
+              <li className="flex items-center justify-center gap-2">
+                <span className="text-primary">★</span>
+                <span><strong className="text-foreground font-semibold">220+</strong> Avaliações no Google</span>
+              </li>
+              <li className="flex items-center justify-center gap-2">
+                <span className="text-primary">📍</span>
+                <span>Oficina Física em <strong className="text-foreground font-semibold">São Paulo</strong></span>
+              </li>
+              <li className="flex items-center justify-center gap-2">
+                <span className="text-primary">🔧</span>
+                <span>Equipamentos Profissionais</span>
+              </li>
+              <li className="flex items-center justify-center gap-2">
+                <span className="text-primary">🛡</span>
+                <span>Atendimento Transparente</span>
+              </li>
+            </ul>
+          </div>
+
 
         </div>
       </section>
