@@ -408,20 +408,15 @@ export default function Index() {
                   style={{ gridTemplateColumns: "1fr 1fr", gridTemplateRows: "repeat(2, minmax(220px, 1fr))" }}
                   data-reveal
                 >
-                  <figure
-                    className="group relative row-span-2 overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md"
-                  >
+                  <figure className="group relative row-span-2 overflow-hidden rounded-2xl border border-border bg-[var(--surface)] shadow-md">
                     <img
                       src={main.src}
                       alt={main.label}
                       loading="lazy"
                       width={1280}
                       height={960}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                     />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
-                      <div className="font-display font-bold uppercase text-white text-sm tracking-wide">{main.label}</div>
-                    </div>
                   </figure>
                   <div className="grid grid-cols-2 gap-4 row-span-2">
                     {small.map((f) => (
@@ -435,11 +430,8 @@ export default function Index() {
                           loading="lazy"
                           width={1024}
                           height={1024}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                          className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                         />
-                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent p-3">
-                          <div className="font-display font-bold uppercase text-white text-xs tracking-wide">{f.label}</div>
-                        </div>
                       </figure>
                     ))}
                   </div>
@@ -463,9 +455,6 @@ export default function Index() {
                         height={768}
                         className="h-full w-full object-cover"
                       />
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent p-3">
-                        <div className="font-display font-bold uppercase text-white text-xs tracking-wide">{f.label}</div>
-                      </div>
                     </figure>
                   ))}
                 </div>
@@ -475,6 +464,7 @@ export default function Index() {
                   ))}
                 </div>
               </>
+
             );
           })()}
         </div>
