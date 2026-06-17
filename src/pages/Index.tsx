@@ -11,7 +11,7 @@ import {
   Wheel, ShieldGuarantee, Mechanic, CertifiedPart, Stopwatch,
   SpeechBubble, QuoteDocument,
 } from "@/components/auto-icons";
-import heroImg from "@/assets/hero-oficina.jpg";
+import heroImg from "@/assets/fachada-real-oficina.jpg.asset.json";
 import atendenteImg from "@/assets/atendente.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
 import oficinaFachada from "@/assets/oficina-fachada.jpg";
@@ -253,7 +253,7 @@ export default function Index() {
       {/* HERO — simplificado, premium e respirável */}
       <section id="top" className="relative isolate overflow-hidden bg-[var(--ink)]">
         <img
-          src={heroImg}
+          src={heroImg.url}
           alt="Oficina mecânica Mack Auto Service em São Paulo"
           width={1920}
           height={1080}
