@@ -11,7 +11,7 @@ import {
   Wheel, ShieldGuarantee, Mechanic, CertifiedPart, Stopwatch,
   SpeechBubble, QuoteDocument,
 } from "@/components/auto-icons";
-import heroImg from "@/assets/hero-oficina.jpg";
+import heroImg from "@/assets/fachada-real-oficina.jpg.asset.json";
 import atendenteImg from "@/assets/atendente.jpg";
 import mackLogo from "@/assets/mack-logo.png.asset.json";
 import oficinaFachada from "@/assets/oficina-fachada.jpg";
