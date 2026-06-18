@@ -363,17 +363,23 @@ export default function Index() {
                     type="button"
                     onClick={() => {
                       setVideoOverlayVisible(false);
-                      videoRef.current?.play();
+                      if (videoRef.current) {
+                        videoRef.current.muted = false;
+                        videoRef.current.play().catch(() => {});
+                      }
                     }}
-                    className="md:hidden absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/40 backdrop-blur-sm rounded-xl transition-opacity duration-300"
-                    aria-label="Clique para assistir o vídeo institucional"
+                    className="md:hidden absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/40 backdrop-blur-sm rounded-xl transition-opacity duration-300 cursor-pointer"
+                    aria-label="Assistir vídeo institucional da Mack Auto Service"
                   >
-                    <div className="video-pulse flex flex-col items-center gap-2">
+                    <div className="video-pulse flex flex-col items-center gap-3">
                       <div className="flex items-center justify-center w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30">
                         <Play className="h-6 w-6 text-white fill-white" />
                       </div>
                       <span className="text-white text-sm font-semibold uppercase tracking-wider">
-                        Clique para assistir
+                        Assistir Vídeo
+                      </span>
+                      <span className="text-white/80 text-xs font-medium">
+                        Conheça a Mack Auto Service em menos de 1 minuto.
                       </span>
                     </div>
                   </button>
