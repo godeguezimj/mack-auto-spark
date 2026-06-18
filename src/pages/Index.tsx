@@ -162,6 +162,8 @@ const CTA_SECONDARY = "RECEBER AVALIAÇÃO PELO WHATSAPP";
 export default function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [videoOverlayVisible, setVideoOverlayVisible] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
