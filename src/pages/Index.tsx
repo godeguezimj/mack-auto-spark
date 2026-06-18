@@ -269,16 +269,16 @@ export default function Index() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--ink)]/95 via-[var(--ink)]/85 to-[var(--ink)]/70" />
 
         <div className="container-x py-16 md:py-28 text-white">
-          <div className="max-w-3xl">
-            
-            <h1 className="mt-4 font-display font-bold text-3xl sm:text-5xl md:text-6xl leading-[1.02] uppercase text-balance">
+          <div className="max-w-3xl text-center sm:text-left">
+
+            <h1 className="mt-4 font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.08] sm:leading-[1.02] uppercase text-balance">
               Carro com barulho, luz no painel ou <span className="text-primary">falhas?</span>
             </h1>
-            <p className="mt-5 text-base md:text-lg text-white/80 max-w-xl leading-relaxed">
+            <p className="mt-7 sm:mt-5 text-lg sm:text-base md:text-lg text-white/80 max-w-xl leading-relaxed sm:leading-relaxed mx-auto sm:mx-0">
               Diagnóstico especializado antes que o prejuízo aumente.
             </p>
 
-            <div className="mt-9 flex flex-col sm:flex-row gap-3 wa-rise">
+            <div className="mt-10 sm:mt-9 flex flex-col sm:flex-row items-center gap-3 wa-rise">
               <a
                 href={wa("Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service sobre o meu veículo.")}
                 onClick={() => trackWhats("hero_primary")}
@@ -296,14 +296,14 @@ export default function Index() {
             </div>
 
             {/* Online status — atendimento humano */}
-            <div className="mt-4 flex items-center gap-2 text-sm text-white/85 wa-rise">
+            <div className="mt-6 sm:mt-4 flex items-center justify-center sm:justify-start gap-2 text-sm text-white/85 wa-rise">
               <span className="online-dot" aria-hidden />
               <span className="font-semibold text-white">Online agora</span>
               <span className="text-white/40">·</span>
               <span className="text-white/70">Resposta rápida em horário comercial</span>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/75">
+            <div className="mt-8 sm:mt-6 flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-x-4 sm:gap-y-2 text-sm text-white/75">
               <div className="flex items-center gap-1.5">
                 <div className="flex">
                   {[1,2,3,4,5].map(i => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
