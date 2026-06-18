@@ -786,7 +786,7 @@ export default function Index() {
           <a
             href={wa("Olá! Quero FALAR COM UM ESPECIALISTA agora sobre o meu veículo.")}
             onClick={() => trackWhats("cta_final")}
-            className="btn-whats cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
+            className="btn-whats wa-btn-soft cta-mega mt-8 inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-10 py-6 font-bold uppercase tracking-wider"
           >
             <span className="wa-breathe"><FaWhatsapp className="h-6 w-6" /></span>
             Falar com um Especialista
