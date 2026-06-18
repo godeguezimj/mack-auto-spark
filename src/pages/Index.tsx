@@ -249,9 +249,9 @@ export default function Index() {
           <a
             href={wa(`Olá! Quero ${CTA_SECONDARY.toLowerCase()}.`)}
             onClick={() => trackWhats("header")}
-            className="btn-whats hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold"
+            className="btn-whats wa-btn-soft hidden sm:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold"
           >
-            <FaWhatsapp className="h-4 w-4" /> WhatsApp
+            <span className="wa-breathe"><FaWhatsapp className="h-4 w-4" /></span> WhatsApp
           </a>
         </div>
       </header>
