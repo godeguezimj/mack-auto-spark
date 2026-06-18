@@ -13,6 +13,7 @@ import {
 } from "@/components/auto-icons";
 import heroImg from "@/assets/fachada-real-oficina.jpg.asset.json";
 import atendenteImg from "@/assets/atendente.jpg";
+import videoMack from "@/assets/video-mack.mp4.asset.json";
 import mackLogo from "@/assets/mack-logo-new.svg.asset.json";
 import estFachada from "@/assets/estrutura/fachada.jpeg.asset.json";
 import estFachadaLateral from "@/assets/estrutura/fachada-lateral.jpeg.asset.json";
