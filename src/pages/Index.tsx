@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Phone, MapPin, Star, Sparkles,
   AlertTriangle, ChevronDown, Clock,
-  X,
+  X, Play,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import {
@@ -162,6 +162,8 @@ const CTA_SECONDARY = "RECEBER AVALIAÇÃO PELO WHATSAPP";
 export default function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [videoOverlayVisible, setVideoOverlayVisible] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -344,8 +346,9 @@ export default function Index() {
         <div className="container-x">
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
             <div className="w-full md:w-1/2">
-              <div className="rounded-xl overflow-hidden shadow-lg bg-[var(--ink)] mx-auto max-w-[320px] md:max-w-none">
+              <div className="relative rounded-xl overflow-hidden shadow-lg bg-[var(--ink)] mx-auto max-w-[320px] md:max-w-none">
                 <video
+                  ref={videoRef}
                   src={videoMack.url}
                   autoPlay
                   muted
@@ -355,6 +358,26 @@ export default function Index() {
                   className="w-full h-auto object-cover"
                   preload="metadata"
                 />
+                {videoOverlayVisible && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setVideoOverlayVisible(false);
+                      videoRef.current?.play();
+                    }}
+                    className="md:hidden absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/40 backdrop-blur-sm rounded-xl transition-opacity duration-300"
+                    aria-label="Clique para assistir o vídeo institucional"
+                  >
+                    <div className="video-pulse flex flex-col items-center gap-2">
+                      <div className="flex items-center justify-center w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30">
+                        <Play className="h-6 w-6 text-white fill-white" />
+                      </div>
+                      <span className="text-white text-sm font-semibold uppercase tracking-wider">
+                        Clique para assistir
+                      </span>
+                    </div>
+                  </button>
+                )}
               </div>
             </div>
             <div className="w-full md:w-1/2 text-center md:text-left">
