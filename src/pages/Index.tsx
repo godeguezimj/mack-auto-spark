@@ -372,7 +372,7 @@ export default function Index() {
                       <div className="flex items-center justify-center w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30">
                         <Play className="h-6 w-6 text-white fill-white" />
                       </div>
-                      <span className="text/plaintext-white text-sm font-semibold uppercase tracking-wider">
+                      <span className="text-white text-sm font-semibold uppercase tracking-wider">
                         Clique para assistir
                       </span>
                     </div>
