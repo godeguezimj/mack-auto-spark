@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   Phone, MapPin, Star, Sparkles,
   AlertTriangle, ChevronDown, Clock,
-  X,
+  X, Play,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import {
