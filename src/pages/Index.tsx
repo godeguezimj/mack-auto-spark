@@ -282,7 +282,7 @@ export default function Index() {
               <a
                 href={wa("Olá! Quero FALAR COM UM ESPECIALISTA da Mack Auto Service sobre o meu veículo.")}
                 onClick={() => trackWhats("hero_primary")}
-                className="btn-whats inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm"
+                className="btn-whats wa-btn-soft inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm"
               >
                 <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span>
                 Falar com um Especialista
