@@ -298,7 +298,7 @@ export default function Index() {
             {/* Online status — atendimento humano */}
             <div className="mt-6 sm:mt-4 flex items-center justify-center sm:justify-start gap-2 text-sm text-white/85 wa-rise">
               <span className="online-dot" aria-hidden />
-              <span className="font-semibold text-white">Online agora</span>
+              <span className="font-semibold text-white">Especialista online agora</span>
               <span className="text-white/40">·</span>
               <span className="text-white/70">Resposta rápida em horário comercial</span>
             </div>
@@ -793,7 +793,7 @@ export default function Index() {
           </a>
           <div className="mt-4 flex items-center justify-center gap-2 text-sm text-white/80">
             <span className="online-dot" aria-hidden />
-            <span className="font-semibold text-white">Online agora</span>
+            <span className="font-semibold text-white">Especialista online agora</span>
             <span className="text-white/40">·</span>
             <span>Equipe disponível no WhatsApp</span>
           </div>
