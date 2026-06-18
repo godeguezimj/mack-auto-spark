@@ -902,7 +902,7 @@ export default function Index() {
         <button
           onClick={() => setHelpOpen((v) => !v)}
           aria-label="Falar no WhatsApp"
-          className="btn-whats inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold uppercase shadow-2xl"
+          className="btn-whats wa-btn-soft inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold uppercase shadow-2xl"
         >
           {helpOpen ? <X className="h-5 w-5" /> : <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span>}
           {helpOpen ? "Fechar" : "Falar no WhatsApp"}
