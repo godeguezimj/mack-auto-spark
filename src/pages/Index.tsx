@@ -432,9 +432,9 @@ export default function Index() {
             <a
               href={wa("Olá! Quero RESOLVER ESSE PROBLEMA do meu veículo.")}
               onClick={() => trackWhats("dores_cta")}
-              className="btn-whats inline-flex items-center gap-2 rounded-xl px-7 py-4 font-bold uppercase tracking-wide"
+              className="btn-whats wa-btn-soft inline-flex items-center gap-2 rounded-xl px-7 py-4 font-bold uppercase tracking-wide"
             >
-              <FaWhatsapp className="h-5 w-5" /> Quero Resolver Esse Problema
+              <span className="wa-breathe"><FaWhatsapp className="h-5 w-5" /></span> Quero Resolver Esse Problema
             </a>
           </div>
         </div>
