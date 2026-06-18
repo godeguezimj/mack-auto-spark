@@ -301,3 +301,12 @@
     box-shadow: 0 2px 4px rgba(15, 23, 42, .08), 0 10px 24px -10px rgba(37, 211, 102, .35);
   }
 }
+
+@keyframes video-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}
+.video-pulse {
+  animation: video-pulse 3s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .video-pulse { animation: none; } }
