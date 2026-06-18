@@ -339,6 +339,44 @@ export default function Index() {
         </div>
       </section>
 
+      {/* VÍDEO INSTITUCIONAL */}
+      <section className="py-12 md:py-20 bg-background">
+        <div className="container-x">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+            <div className="w-full md:w-1/2">
+              <div className="rounded-xl overflow-hidden shadow-lg bg-[var(--ink)] mx-auto max-w-[320px] md:max-w-none">
+                <video
+                  src={videoMack.url}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  className="w-full h-auto object-cover"
+                  preload="metadata"
+                />
+              </div>
+            </div>
+            <div className="w-full md:w-1/2 text-center md:text-left">
+              <span className="text-primary font-semibold uppercase text-sm tracking-wider">Conheça a Mack Auto Service</span>
+              <h2 className="mt-2 font-display font-black text-2xl md:text-4xl uppercase text-balance">
+                CONHEÇA A MACK AUTO SERVICE
+              </h2>
+              <p className="mt-4 text-base text-muted-foreground max-w-md mx-auto md:mx-0 leading-relaxed">
+                Veja nossa estrutura, atendimento e compromisso com a qualidade através de imagens reais da oficina.
+              </p>
+              <a
+                href={wa("Olá! Quero FALAR COM UM MECÂNICO da Mack Auto Service.")}
+                onClick={() => trackWhats("video_institucional")}
+                className="btn-whats inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 font-semibold uppercase tracking-wide text-sm mt-6"
+              >
+                <FaWhatsapp className="h-5 w-5" /> Falar com um Mecânico
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* QUAL O PROBLEMA DO SEU CARRO — movido para logo abaixo do hero */}
       <section className="py-12 md:py-20 bg-background">
         <div className="container-x">
